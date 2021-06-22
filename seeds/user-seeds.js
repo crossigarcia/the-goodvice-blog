@@ -21,7 +21,7 @@ const userdata = [
     username: 'npetelo',
     email: 'npetelo@email.com',
     password: 'npeteloPass'
-  },
+  }
   
 ];
 
