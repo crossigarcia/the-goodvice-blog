@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// create our Post model
-class Post extends Model {}
+// create our Tag model
+class Tag extends Model {}
 
-// create fields/columns for Post model
-Post.init(
+// create fields/columns for Tag model
+Tag.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -13,16 +13,12 @@ Post.init(
         primaryKey: true,
         autoIncrement: true
       },
-      title: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      post_text: {
+      tag_text: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            // this means the post_text must be at least four characters long
-            len: [4]
+            // this means the tag_text must be at least three characters long (i.e. a "#" plus two characters)
+            len: [3]
           }
       },
       user_id: {
@@ -32,10 +28,10 @@ Post.init(
           key: 'id'
         }
       },
-      tag_id : {
+      post_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'tag',
+          model: 'post',
           key: 'id'
         }
       }
@@ -44,8 +40,8 @@ Post.init(
       sequelize,
       freezeTableName: true,
       underscored: true,
-      modelName: 'post'
+      modelName: 'tag'
     }
   );
 
-  module.exports = Post;
+  module.exports = Tag;
