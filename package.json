@@ -25,5 +25,13 @@
   },
   "devDependencies": {
     "jest": "^25.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crossigarcia/the-goodvice-blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/crossigarcia/the-goodvice-blog/issues"
+  },
+  "homepage": "https://github.com/crossigarcia/the-goodvice-blog#readme"
 }
