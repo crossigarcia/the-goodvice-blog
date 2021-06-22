@@ -1,10 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// create our Post model
+// create our Tag model
 class Tag extends Model {}
 
-// create fields/columns for Post model
+// create fields/columns for Tag model
 Tag.init(
     {
       id: {
@@ -17,8 +17,8 @@ Tag.init(
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            // this means the post_text must be at least four characters long
-            len: [2]
+            // this means the tag_text must be at least three characters long (i.e. a "#" plus two characters)
+            len: [3]
           }
       },
       user_id: {
