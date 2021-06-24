@@ -26,17 +26,8 @@ Tag.init(
       references: {
         model: "user",
         key: "id",
-      },
-<<<<<<< HEAD
-    },
-    post_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "post",
-        key: "id",
-      },
-=======
-      // user_id: {
+      }
+      //, user_id: {
       //   type: DataTypes.INTEGER,
       //   references: {
       //     model: 'user',
@@ -50,8 +41,7 @@ Tag.init(
       //     key: 'id'
       //   }
       // }
->>>>>>> main
-    },
+    }
   },
   {
     sequelize,
@@ -63,7 +53,7 @@ Tag.init(
 
 module.exports = Tag;
 
-function helpMe () {
-  console.log('hey lol');
-}
-helpMe();
+// function helpMe () {
+//   console.log('hey lol');
+// }
+// helpMe();
