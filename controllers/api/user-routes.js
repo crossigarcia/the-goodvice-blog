@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Post, Comment } = require('../../models');
 
 // get all users
 router.get('/', (req, res) => {
@@ -16,10 +16,24 @@ router.get('/', (req, res) => {
 // get user by id
 router.get('/:id', (req, res) => {
   User.findOne({
+    attributes: { exclude: ['password'] },
     where: {
       id: req.params.id
     },
-    //include: post, comment, tags
+    include: [
+      {
+        model: Post,
+        attributes: ['title', 'post_text', 'created_at']
+      },
+      {
+        model: Comment,
+        attributes: ['comment_text', 'created_at'],
+        include: {
+          model: Post,
+          attributes: ['title']
+        }
+      }
+    ]
   })
   .then(dbUserData => res.json(dbUserData))
   .catch(err => {
@@ -42,13 +56,34 @@ router.post('/', ({ body }, res) => {
 });
 
 //login user
+router.post('/login', (req, res) => {
+  User.findOne({
+    where: {
+      username: req.body.username
+    }
+  }).then(dbUserData => {
+    if(!dbUserData) {
+      res.status(400).json({ message: 'Username does not exist, try again!'});
+      return;
+    }
+
+    const validPassword = dbUserData.checkPassword(req.body.password);
+    if (!validPassword) {
+      res.status(400).json({ message: 'Invalid password' });
+      return;
+    }
+
+    res.json({ user: dbUserData, message: 'You are now logged in!' });
+    
+  });
+});
 
 //logout user
 
 //update user
 router.put('/:id', (req, res) => {
   User.update(req.body, {
-    // hooks?
+    individualHooks: true,
     where: {
       id: req.params.id
     }
