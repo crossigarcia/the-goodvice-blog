@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post, Tag, User, Comment } = require("../../models");
+const { Post, Tag, User } = require("../../models");
 
 router.get("/tag/:id", (req, res) => {
   Tag.findOne({
