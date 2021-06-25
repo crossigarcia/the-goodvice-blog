@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, Tag, User, Comment } = require('../../models');
+const { Post, Tag, User, Comment, PostTag } = require('../../models');
 
 
 // get all users
@@ -74,42 +74,116 @@ router.get('/', (req, res) => {
       });
   });
 
-  router.post('/', (req, res) => {
-    // expects {title: 'Taskmaster goes public!', post_text: 'https://taskmaster.com/press', user_id: 1, tagIds: [1, 2]}
-    Post.create({
-      title: req.body.title,
-      post_text: req.body.post_text,
-      user_id: req.body.user_id
-    })
-      .then(dbPostData => res.json(dbPostData))
-      .catch(err => {
+//   router.post('/', (req, res) => {
+//     // expects {title: 'Taskmaster goes public!', post_text: 'https://taskmaster.com/press', user_id: 1, tagIds: [1, 2]}
+//     Post.create({
+//       title: req.body.title,
+//       post_text: req.body.post_text,
+//       user_id: req.body.user_id
+//     })
+//       .then(dbPostData => res.json(dbPostData))
+//       .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//       });
+//   });
+
+// create new product
+router.post('/', (req, res) => {
+    /* req.body should look like this...
+      {
+        product_name: "Basketball",
+        price: 200.00,
+        stock: 3,
+        tagIds: [1, 2, 3, 4]
+      }
+    */
+    Post.create(req.body)
+      .then((post) => {
+        // if there's product tags, we need to create pairings to bulk create in the ProductTag model
+        if (req.body.tagIds.length) {
+          const postTagIdArr = req.body.tagIds.map((tag_id) => {
+            return {
+              post_id: post.id,
+              tag_id,
+            };
+          });
+          return PostTag.bulkCreate(postTagIdArr);
+        }
+        // if no product tags, just respond
+        res.status(200).json(post);
+      })
+      .then((postTagIds) => res.status(200).json(postTagIds))
+      .catch((err) => {
         console.log(err);
-        res.status(500).json(err);
+        res.status(400).json(err);
       });
   });
 
-  router.put('/:id', (req, res) => {
-    Post.update(
-      {
-        title: req.body.title,
-        post_text: req.body.post_text
+//   router.put('/:id', (req, res) => {
+//     Post.update(
+//       {
+//         title: req.body.title,
+//         post_text: req.body.post_text
+//       },
+//       {
+//         where: {
+//           id: req.params.id
+//         }
+//       }
+//     )
+//       .then(dbPostData => {
+//         if (!dbPostData) {
+//           res.status(404).json({ message: 'No post found with this id' });
+//           return;
+//         }
+//         res.json(dbPostData);
+//       })
+//       .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//       });
+//   });
+
+ // update product
+router.put('/:id', (req, res) => {
+    // update product data
+    Post.update(req.body, {
+      where: {
+        id: req.params.id,
       },
-      {
-        where: {
-          id: req.params.id
-        }
-      }
-    )
-      .then(dbPostData => {
-        if (!dbPostData) {
-          res.status(404).json({ message: 'No post found with this id' });
-          return;
-        }
-        res.json(dbPostData);
+    })
+      .then((post) => {
+        // find all associated tags from ProductTag
+        return PostTag.findAll({ where: { post_id: req.params.id } });
       })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
+      .then((postTags) => {
+        // get list of current tag_ids
+        const postTagIds = postTags.map(({ tag_id }) => tag_id);
+        // create filtered list of new tag_ids
+        const newPostTags = req.body.tagIds
+          .filter((tag_id) => !postTagIds.includes(tag_id))
+          .map((tag_id) => {
+            return {
+              post_id: req.params.id,
+              tag_id,
+            };
+          });
+        // figure out which ones to remove
+        const postTagsToRemove = postTags
+          .filter(({ tag_id }) => !req.body.tagIds.includes(tag_id))
+          .map(({ id }) => id);
+  
+        // run both actions
+        return Promise.all([
+          PostTag.destroy({ where: { id: postTagsToRemove } }),
+          PostTag.bulkCreate(newPostTags),
+        ]);
+      })
+      .then((updatedPostTags) => res.json(updatedPostTags))
+      .catch((err) => {
+        // console.log(err);
+        res.status(400).json(err);
       });
   });
 

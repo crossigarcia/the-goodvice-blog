@@ -25,10 +25,19 @@ PostTag.init(
         key: "id",
       },
     },
+    created_at: {
+      type:  DataTypes.DATE,
+      defaultValue: Date.now()
+    },
+    
+    updated_at: {
+      type: DataTypes.DATE,
+      defaultValue: Date.now()
+    }
   },
   {
     sequelize,
-    timestamps: false,
+    //timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: "post_tag",
