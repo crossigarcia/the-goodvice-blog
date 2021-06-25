@@ -1,10 +1,11 @@
 const router = require("express").Router();
 const { Post, Tag, User } = require("../../models");
 
-router.get("/tag/:id", (req, res) => {
+router.get("/tag/:tag", (req, res) => {
   Tag.findOne({
     where: {
-      id: req.params.id,
+      // id: req.params.id,
+      tag: req.params.tag
     },
     attributes: ["id", "tag_text"],
     include: [
