@@ -47,8 +47,8 @@ router.get('/:id', (req, res) => {
 });
 
 //create user
-router.post('/', ({ body }, res) => {
-  User.create(body)
+router.post('/', (req, res) => {
+  User.create(req.body)
   .then(user => {
     req.session.save(() => {
       req.session.user_id = user.id;
