@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Comment } = require('../../models');
+const { User, Post, Comment, Tag } = require('../../models');
 
 // get all users
 router.get('/', (req, res) => {
@@ -23,7 +23,11 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Post,
-        attributes: ['title', 'post_text', 'created_at']
+        attributes: ['title', 'post_text', 'created_at'],
+        include: {
+          model: Tag,
+          attributes: ['tag_text']
+        }
       },
       {
         model: Comment,
@@ -43,11 +47,16 @@ router.get('/:id', (req, res) => {
 });
 
 //create user
-router.post('/', ({ body }, res) => {
-  User.create(body)
+router.post('/', (req, res) => {
+  User.create(req.body)
   .then(user => {
-    //req.session.save()
-    res.json(user);
+    req.session.save(() => {
+      req.session.user_id = user.id;
+      req.session.username = user.username;
+      req.session.loggedIn = true;
+
+      res.json(user);
+    });
   })
   .catch(err => {
     console.log(err);
@@ -55,44 +64,44 @@ router.post('/', ({ body }, res) => {
   });
 });
 
-// //login user
-// router.post('/login', (req, res) => {
-//   User.findOne({
-//     where: {
-//       username: req.body.username
-//     }
-//   }).then(dbUserData => {
-//     if(!dbUserData) {
-//       res.status(400).json({ message: 'Username does not exist, try again!'});
-//       return;
-//     }
+//login user
+router.post('/login', (req, res) => {
+  User.findOne({
+    where: {
+      username: req.body.username
+    }
+  }).then(dbUserData => {
+    if(!dbUserData) {
+      res.status(400).json({ message: 'Username does not exist, try again!'});
+      return;
+    }
 
-//     const validPassword = dbUserData.checkPassword(req.body.password);
-//     if (!validPassword) {
-//       res.status(400).json({ message: 'Invalid password' });
-//       return;
-//     }
+    const validPassword = dbUserData.checkPassword(req.body.password);
+    if (!validPassword) {
+      res.status(400).json({ message: 'Invalid password' });
+      return;
+    }
 
-//     req.session.save(() => {
-//       req.session.user_id = dbUserData.id;
-//       req.session.username = dbUserData.username;
-//       req.session.loggedIn = true;
+    req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
 
-//       res.json({ user: dbUserData, message: 'You are now logged in!' });
-//     });
-//   });
-// });
+      res.json({ user: dbUserData, message: 'You are now logged in!' });
+    });
+  });
+});
 
-// //logout user
-// router.post('/logout', (req, res) => {
-//   if (req.session.loggedIn) {
-//     req.session.destroy(() => {
-//       res.status(204).end();
-//     });
-//   } else {
-//     res.status(404).end();
-//   }
-// });
+//logout user
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
 
 //update user
 router.put('/:id', (req, res) => {
