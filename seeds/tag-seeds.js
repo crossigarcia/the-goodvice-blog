@@ -3,16 +3,22 @@ const { Tag } = require('../models');
 
 const tagdata = [
   {
-    tag_text: "this is a tag"
+    tag_text: "plants"
   },
 
   {
-    tag_text: "this is a new tag"
+    tag_text: "food"
   },
 
-  { 
-    tag_text: "this is a 3rd tag"
+  {
+    tag_text: "pets"  
   },
+  {
+    tag_text: "household"
+  },
+  {
+    tag_text: "general" 
+  }
   
 ];
 
