@@ -1,22 +1,14 @@
-<ol class="post-list">
+<article class="post">
+
     {{#each posts as |post|}}
-  <li>
-    <article class="post">
-      <div class="card">
-        <div class="card-header">
-            <h2><a href="/post/{{id}}">{{title}}</a></h2>
-            {{#each post.tags}}
-            <h4>{{tag_text}}</h4>
-            {{!-- {{log tag_text}} --}}
-            {{/each}}
-            <span>Posted by {{user.username}} on {{created_at}}</span>
-            
-        </div>
-        <div class="card-body">
-            {{post_text}}
-        </div>
-      </div>
-    </article>
-  </li>
-  {{/each}}
-</ol>
+
+    {{> post-info post }}
+    {{#each post.tags}}
+     <h4>{{tag_text}}</h4>
+     {{!-- {{log tag_text}} --}}
+    {{/each}}
+
+
+    {{/each}}
+
+</article>
