@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Post, Tag, User, Comment, PostTag } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 
 // get all users
@@ -74,27 +75,13 @@ router.get('/', (req, res) => {
       });
   });
 
-//   router.post('/', (req, res) => {
-//     // expects {title: 'Taskmaster goes public!', post_text: 'https://taskmaster.com/press', user_id: 1, tagIds: [1, 2]}
-//     Post.create({
-//       title: req.body.title,
-//       post_text: req.body.post_text,
-//       user_id: req.body.user_id
-//     })
-//       .then(dbPostData => res.json(dbPostData))
-//       .catch(err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//       });
-//   });
-
-// create new product
-router.post('/', (req, res) => {
+// create new post
+router.post('/', withAuth, (req, res) => {
     /* req.body should look like this...
       {
-        product_name: "Basketball",
-        price: 200.00,
-        stock: 3,
+        post_name: "Basketball",
+        title: "test title",
+        user_id: 3,
         tagIds: [1, 2, 3, 4]
       }
     */
@@ -120,33 +107,8 @@ router.post('/', (req, res) => {
       });
   });
 
-//   router.put('/:id', (req, res) => {
-//     Post.update(
-//       {
-//         title: req.body.title,
-//         post_text: req.body.post_text
-//       },
-//       {
-//         where: {
-//           id: req.params.id
-//         }
-//       }
-//     )
-//       .then(dbPostData => {
-//         if (!dbPostData) {
-//           res.status(404).json({ message: 'No post found with this id' });
-//           return;
-//         }
-//         res.json(dbPostData);
-//       })
-//       .catch(err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//       });
-//   });
-
  // update product
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     // update product data
     Post.update(req.body, {
       where: {
@@ -187,7 +149,7 @@ router.put('/:id', (req, res) => {
       });
   });
 
-  router.delete('/:id', (req, res) => {
+  router.delete('/:id', withAuth, (req, res) => {
     Post.destroy({
       where: {
         id: req.params.id
