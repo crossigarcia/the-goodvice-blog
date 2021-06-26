@@ -1,6 +1,9 @@
 
 {{> post-info post }}
-
+ {{#each post.tags}}
+     <h4>{{tag_text}}</h4>
+     {{!-- {{log tag_text}} --}}
+    {{/each}}
 <form class="comment-form">
   <div>
     <textarea name="comment-body"></textarea>
