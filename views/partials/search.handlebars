@@ -1,25 +1,8 @@
-<div class="dropdown show">
-  <a
-    class="btn btn-secondary dropdown-toggle"
-    href="#"
-    role="button"
-    id="dropdownMenuLink"
-    data-toggle="dropdown"
-    aria-haspopup="true"
-    aria-expanded="false"
-  >
-    Search by Tag
-  </a>
-
-  {{!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    {{#each tagdata}}
-    <a class="dropdown-item" href={{id}}>{{tag_text}}</a>
-    {{!-- {{/each}} --}}
-  {{!-- </div> --}} --}}
-
+<div>
   <select>
-    {{#each tagdata}}
+    {{#each Tag}}
       <option value={{id}}>{{tag_text}}</option>
+      {{log Tag}}
     {{/each}}
   </select>
 </div>

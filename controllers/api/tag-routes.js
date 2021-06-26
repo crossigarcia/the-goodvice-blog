@@ -1,31 +1,13 @@
 const router = require("express").Router();
 const { Post, Tag, User } = require("../../models");
 
-router.get("/tag/:tag", (req, res) => {
+router.get("/:id", (req, res) => {
   Tag.findOne({
     where: {
-      // id: req.params.id
-      tag: req.params.tag
+      id: req.params.id
+    //   tag: req.params.tag
     },
-    attributes: ["id", "tag_text"],
-    include: [
-      {
-        model: Post,
-        attributes: ["id", "post_text", "title"],
-        include: {
-          model: User,
-          attributes: ["username"],
-        },
-      },
-      {
-        model: User,
-        attributes: ["username"],
-      },
-      {
-        model: Tag,
-        as: "tags",
-      },
-    ],
+    attributes: ["id", "tag_text"]
   })
     .then((dbTagData) => {
       if (!dbTagData) {
