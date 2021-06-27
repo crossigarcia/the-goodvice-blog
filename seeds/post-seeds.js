@@ -5,16 +5,17 @@ const postdata = [
   {
     title: "First Post",
     post_text: "post text for first post",
-    user_id: 1
+    user_id: 1,
+    tag_id: 2
   }
   , {
-    title: "vacation 2021",
+    title: "vacation 2020",
     post_text: "please send help my brain is melting",
     user_id: 1,
     tag_id: 2
   }
   , {
-    title: "vacation 2022",
+    title: "vacation 2049",
     post_text: "all good here thanks tho",
     user_id: 1,
     tag_id: 4
