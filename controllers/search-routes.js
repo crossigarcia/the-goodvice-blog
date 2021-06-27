@@ -2,7 +2,11 @@ const router = require("express").Router();
 const sequelize = require("../config/connection");
 const { Post, User, Comment, Tag, PostTag } = require("../models");
 
-router.get("/tag/plants", (req, res) => {
+tagsArr = ['plants', 'food', 'pets', 'household', 'general'];
+
+router.get("#:tag", (req, res) => {
+  // let tag = req.params.tag;
+  
   Post.findAll({
     where: {
       tag_id: 1,
