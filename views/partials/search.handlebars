@@ -1,8 +1,7 @@
 <div>
   <select>
-    {{#each Tag}}
-      <option value={{id}}>{{tag_text}}</option>
-      {{log Tag}}
+    {{#each tags as |tag|}}
+      <option value="{{tag.id}}">{{tag.tag_text}}</option>
     {{/each}}
   </select>
 </div>
