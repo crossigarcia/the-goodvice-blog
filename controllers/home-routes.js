@@ -30,6 +30,7 @@ router.get('/', (req, res) => {
     .then(dbPostData => {
       // pass a single post object into the homepage template
       const posts = dbPostData.map(post => post.get({ plain: true }));
+
       res.render('homepage', {
         posts,
         loggedIn: req.session.loggedIn
@@ -81,7 +82,23 @@ router.get('/post/:id', (req, res) => {
       const post = dbPostData.get({ plain: true });
 
       // pass data to template
-      res.render('single-post', { post});
+      res.render('single-post', { post });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get('/', (req, res) => {
+  Tag.findAll({
+    attributes: ['id', 'tag_text'],
+  })
+    .then(dbTagData => {
+      // pass a single post object into the homepage template
+      const tags = dbTagData.map(tag => tag.get({ plain: true }));
+
+      res.render('homepage', { tags });
     })
     .catch(err => {
       console.log(err);

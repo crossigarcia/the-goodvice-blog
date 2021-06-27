@@ -1,3 +1,4 @@
+
 <h1>Handlebars JS Example</h1>
 
     <select>
@@ -8,5 +9,14 @@
         {{/each}}
     </select>
 
-   
+ 
+<div>
+  <label for="tags">Search by tag:</label>
+  <select name="tags" id="tags">
+    {{#each tags as |tag|}}
+      <option value="{{id}}">{{tag_text}}</option>
+    {{/each}}
+  </select>
+</div>
+
 
