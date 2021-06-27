@@ -24,10 +24,7 @@ router.get('/', (req, res) => {
         model: User,
         attributes: ['username']
       },
-      {
-        model: Tag,
-        as: 'tags'
-      }
+      
     ]
   })
     .then(dbPostData => {
