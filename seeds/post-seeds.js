@@ -3,8 +3,8 @@ const { Post } = require('../models');
 
 const postdata = [
   {
-    title: "this is a title",
-    post_text: "this is a post",
+    title: "First Post",
+    post_text: "post text for first post",
     user_id: 1
   }
   , {
