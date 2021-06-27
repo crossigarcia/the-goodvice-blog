@@ -14,7 +14,6 @@ router.get("/:id", (req, res) => {
   Tag.findOne({
     where: {
       id: req.params.id
-    //   tag: req.params.tag
     },
     attributes: ["id", "tag_text"]
   })
