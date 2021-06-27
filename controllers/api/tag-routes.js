@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Post, Tag, User } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 router.get("/:id", (req, res) => {
   Tag.findOne({
@@ -22,8 +23,8 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.put("/tag/:id", (req, res) => {
-  Post.update(
+router.put("/:id", (req, res) => {
+  Tag.update(
     {
       tag_text: req.body.tag_text
     },
@@ -46,8 +47,8 @@ router.put("/tag/:id", (req, res) => {
     });
 });
 
-router.delete("/tag/:id", (req, res) => {
-  Post.destroy({
+router.delete("/:id", (req, res) => {
+  Tag.destroy({
     where: {
       id: req.params.id,
     },
@@ -64,5 +65,22 @@ router.delete("/tag/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+router.post("/", withAuth, (req, res) => {
+  // check the session
+  console.log("==inside tag create==")
+  if (req.session) {
+    Tag.create({
+      tag_text: req.body.tag_text,
+    })
+      .then((dbCommentData) => res.json(dbCommentData))
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json(err);
+      });
+  }
+});
+
+
 
 module.exports = router;
