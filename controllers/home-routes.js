@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment,Tag, PostTag } = require('../models');
+const { Post, User, Comment, Tag, PostTag } = require('../models');
 
 // get all posts for homepage
 router.get('/', (req, res) => {
@@ -86,22 +86,6 @@ router.get('/post/:id', (req, res) => {
 
       // pass data to template
       res.render('single-post', { post });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-router.get('/', (req, res) => {
-  Tag.findAll({
-    attributes: ['id', 'tag_text'],
-  })
-    .then(dbTagData => {
-      // pass a single post object into the homepage template
-      const tags = dbTagData.map(tag => tag.get({ plain: true }));
-
-      res.render('homepage', { tags });
     })
     .catch(err => {
       console.log(err);
