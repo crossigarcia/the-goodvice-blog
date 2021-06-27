@@ -8,13 +8,13 @@ async function deleteCommentFormHandler(event) {
   const response = await fetch(`/api/comments/${id}`, {
     method: "DELETE",
   });
-  
+
   if (response.ok) {
     document.location.reload();
   } else {
     alert(response.statusText);
   }
-}
+};
 
 document
   .querySelector(".delete-comment-btn")
