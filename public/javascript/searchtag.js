@@ -1,7 +1,7 @@
-async function queryPageLoader (event) {
+// async function queryPageLoader (event) {
     
-}
+// }
 
-document
-  .querySelector("#plants")
-  .addEventListener("click", queryPageLoader);
+// document
+//   .querySelector("#plants")
+//   .addEventListener("click", queryPageLoader);

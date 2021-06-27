@@ -1,4 +1,44 @@
 /* RESET? css framework? */
-body {
-    background-color: aquamarine;
+* {
+    --seafoam: #2fd4be;
+    /* rgb: 47, 212, 190 */
+    --light-seafoam: #adfff4;
+    /* rgb: 173, 255, 244 */
 }
+
+body {
+    font-family: 'Kanit', sans-serif;
+    background-color: var(--seafoam);
+}
+
+a {
+    text-decoration: none;
+}
+
+.main-title {
+    font-family: 'Changa One', cursive;
+    font-size: 5vw;
+    color: white;
+    text-align: center;
+}
+
+.main-title:hover {
+    color: var(--light-seafoam);
+}
+
+.nav-item {
+    margin: 0 10px 20px 10px;
+    color: white;
+    font-size: 20px;
+}
+
+.nav-item:hover {
+    color: var(--light-seafoam);
+}
+
+#search-bar {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
