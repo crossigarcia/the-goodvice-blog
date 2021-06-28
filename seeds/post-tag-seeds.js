@@ -3,7 +3,7 @@ const {PostTag} = require('../models');
 const postTagData = [
     {
         post_id: 1,
-        tag_id: 5,
+        tag_id: 5
     },
     {
 
