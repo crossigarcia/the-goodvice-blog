@@ -77,34 +77,29 @@ router.get('/', (req, res) => {
 
 // create new post
 router.post('/', withAuth, (req, res) => {
-    /* req.body should look like this...
-      {
-        post_name: "Basketball",
-        title: "test title",
-        user_id: 3,
-        tagIds: [1, 2, 3, 4]
+    Post.create({
+      title: req.body.title,
+      post_text: req.body.post_text,
+      tag_id: req.body.tag_id,
+      user_id: req.session.user_id
+    })
+    .then((post) => {
+      if (req.body.tagIds.length) {
+        const postTagIdArr = req.body.tagIds.map((tag_id) => {
+          return {
+            post_id: post.id,
+            tag_id,
+          };
+        });
+        return PostTag.bulkCreate(postTagIdArr);
       }
-    */
-    Post.create(req.body)
-      .then((post) => {
-        // if there's product tags, we need to create pairings to bulk create in the ProductTag model
-        if (req.body.tagIds.length) {
-          const postTagIdArr = req.body.tagIds.map((tag_id) => {
-            return {
-              post_id: post.id,
-              tag_id,
-            };
-          });
-          return PostTag.bulkCreate(postTagIdArr);
-        }
-        // if no product tags, just respond
-        res.status(200).json(post);
-      })
-      .then((postTagIds) => res.status(200).json(postTagIds))
-      .catch((err) => {
-        console.log(err);
-        res.status(400).json(err);
-      });
+      res.status(200).json(post);
+    })
+    .then((postTagIds) => res.status(200).json(postTagIds))
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
   });
 
  // update product
