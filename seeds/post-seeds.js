@@ -5,26 +5,31 @@ const postdata = [
   {
     title: "First Post",
     post_text: "post text for first post",
-    user_id: 1,
-    tag_id: 2
+    user_id: 1
   }
-  , {
-    title: "vacation 2020",
-    post_text: "please send help my brain is melting",
-    user_id: 1,
-    tag_id: 2
+  ,
+  {
+    title: "Second Post",
+    post_text: "post text for second post",
+    user_id: 1
   }
-  , {
-    title: "vacation 2049",
-    post_text: "all good here thanks tho",
-    user_id: 1,
-    tag_id: 4
+  ,
+  {
+    title: "Third Post",
+    post_text: "post text for third post",
+    user_id: 2
   }
-  , {
-    title: "How to Lie 101",
-    post_text: "Tell everyone you like lying. It sets a precedent.",
-    user_id: 4,
-    tag_id: 5
+  ,
+  {
+    title: "Fourth Post",
+    post_text: "post text for fourth post",
+    user_id: 3
+  }
+  ,
+  {
+    title: "Fifth Post",
+    post_text: "post text for fifth post",
+    user_id: 4
   }
 ];
 
