@@ -13,26 +13,6 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/tags/:id", (req, res) => {
-  Tag.findOne({
-    where: {
-      id: req.params.id,
-    },
-    attributes: ["id", "tag_text"],
-  })
-    .then((dbTagData) => {
-      if (!dbTagData) {
-        res.status(404).json({ message: "No tag found with this id" });
-        return;
-      }
-      res.json(dbTagData);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
 router.put("/:id", (req, res) => {
   Post.update(
     {
@@ -81,27 +61,26 @@ router.get("/:id", (req, res) => {
   PostTag.findAll({
     where: {
       tag_id: req.params.id,
-    }
-    , attributes: ['post_id']
+    },
+    attributes: ["post_id"],
   })
     .then((dbTags) => {
-        console.log('____________' + dbTags);
+      console.log("____________" + dbTags);
       let postIds = dbTags.map(
         (postTag) => postTag.get({ plain: true }).post_id
       );
-      // postIds = [1];
-      console.log('trying to find this dude' + postIds);
+      console.log("trying to find this dude" + postIds);
       return Post.findAll({
         where: {
-          id: {[Op.in]: postIds}
+          id: { [Op.in]: postIds },
         },
         attributes: [
-          'id',
-          'title',
-          'post_text',
-        //   'created_at',
-        //   'updated_at',
-        //   'tag_id'
+          "id",
+          "title",
+          "post_text",
+          //   'created_at',
+          //   'updated_at',
+          //   'tag_id'
         ],
         include: [
           {
@@ -129,9 +108,13 @@ router.get("/:id", (req, res) => {
         ],
       });
     })
-    .then(dbTags => {
-        const posts = dbTags.map(post => post.get({plain:true}));
-        res.render('homepage', {posts, loggedIn: req.session.loggedIn, nextUrl: '/tags/' + req.params.id});
+    .then((dbTags) => {
+      const posts = dbTags.map((post) => post.get({ plain: true }));
+      res.render("homepage", {
+        posts,
+        loggedIn: req.session.loggedIn,
+        nextUrl: "/tags/" + req.params.id,
+      });
     })
     .catch((err) => {
       console.log(err);
