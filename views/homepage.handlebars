@@ -1,16 +1,12 @@
-<div id="search-bar">
-    {{> search tags }}
-</div>
-
 <section class="row justify-content-center">
 
     {{#each posts as |post|}}
 
     {{> post-info post }}
 
-    {{#each post.tags}}
+    {{!-- {{#each post.tags}}
      <h4>{{tag_text}}</h4>
-    {{/each}}
+    {{/each}} 
 
     {{/each}}
 

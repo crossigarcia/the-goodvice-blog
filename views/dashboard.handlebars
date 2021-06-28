@@ -14,6 +14,13 @@
               <label for="post-test">Content</label>
               <textarea id="post-text" name="post-text"></textarea>
             </div>
+            <div>
+              <select id="tag-dropdown" multiple="multiple">
+                {{#each tags}}
+                <option value="{{id}}">{{tag_text}}</option>
+                {{/each}}
+              </select>
+            </div>
             <button type="submit" class="btn">Create</button>
             <button type="reset" class="close" id="cancel">Cancel</button>
           </form>
@@ -63,7 +70,10 @@
   <ol>
     {{#each posts as |post|}}
       {{> post-info-partials post}}
-      
+
+      {{!-- {{#each post.tags}}
+      <h4>{{tag_text}}</h4>
+      {{/each}} 
     {{/each}}
   </ol>
 </section>

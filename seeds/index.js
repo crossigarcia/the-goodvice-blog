@@ -17,7 +17,7 @@ const seedAll = async () => {
 
   await seedTags();
 
-  // await seedPostTags();
+  await seedPostTags();
 
   process.exit(0);
 };

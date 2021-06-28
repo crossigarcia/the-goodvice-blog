@@ -3,12 +3,24 @@ async function newFormHandler(event) {
   
     const title = document.querySelector('input[name="post-title"]').value;
     const post_text = document.querySelector('textarea[name="post-text"]').value;
+    const tagDrop = document.getElementById('tag-dropdown');
+
+    const tagIds = [];
+    
+    for (var i = 0; i < tagDrop.options.length; i++) {
+        if (tagDrop.options[i].selected) {
+        tagIds.push(tagDrop.options[i].value);
+        }
+    }
+    //tagIds.push(tagDrop.value);
+    console.log(tagIds);
   
     const response = await fetch(`/api/posts`, {
         method: 'POST',
         body: JSON.stringify({
             title,
-            post_text
+            post_text,
+            tagIds
         }),
         headers: {
             'Content-Type': 'application/json'
