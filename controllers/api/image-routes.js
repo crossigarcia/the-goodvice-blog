@@ -1,19 +1,21 @@
-const router = require("express").Router();
-const { Post, Tag, User } = require("../../models");
-const withAuth = require("../../utils/auth");
+const router = require('express').Router();
+const fs = require('fs');
+const multer = require('multer');
 
-//router.set('view engine', 'ejs');
+var fileStorageEngine = multer.diskStorage ({
+    destination: (req, file, cb) => {
+      cb(null, './images')
+    },
+    filename: (req, file, cb) => {
+      cb(null, Date.now() + '-' + file.originalname)
+    },
+  });
+   
+  var multer_Upload = multer({ storage: fileStorageEngine });
+  
+  router.post('/', multer_Upload.single('image'), (req, res) => {
+    console.log(req.file);
+    res.send("Upload Complete");
+  });
 
-
-router.get('/upload', (req, res, next)=> {
-    res.render('img_fm.ejs');
-});
-
-router.post('/upload', (req, res, next)=> {
-    res.redirect('/');
-})
-
-//==========================================================================
-
-
-module.exports = router;
+  module.exports = router;

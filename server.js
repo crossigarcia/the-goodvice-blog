@@ -2,6 +2,8 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+// const fs = require('fs');
+// const multer = require('multer');
 
 //const multer = require('multer');
 const helpers = require('./utils/helpers');
@@ -24,24 +26,33 @@ const sess = {
 
 app.use(session(sess));
 
-// var storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, '/my-uploads')
+// var fileStorageEngine = multer.diskStorage ({
+//   destination: (req, file, cb) => {
+//     cb(null, './images')
 //   },
-//   filename: function (req, file, cb) {
-//     cb(null, file.fieldname + '-' + Date.now())
-//   }
+//   filename: (req, file, cb) => {
+//     cb(null, Date.now() + '-' + file.originalname)
+//   },
 // });
  
-// var upload = multer({ storage: storage });
+// var multer_Upload = multer({ storage: fileStorageEngine });
+
+// app.post('/single', multer_Upload.single('image'), (req, res) => {
+//   console.log(req.file);
+//   res.send("Upload Complete");
+// });
 
 const hbs = exphbs.create({ helpers });
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+
 app.use(express.json());
-//app.use(multer({ storage}))//.single("image");
+// app.get('/single',(req, res) => {
+//   res.render('img_fm');
+// })
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 

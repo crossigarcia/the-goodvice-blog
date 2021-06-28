@@ -101,5 +101,9 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/single',(req, res) => {
+  res.render('img_fm');
+})
+
 
 module.exports = router;
