@@ -23,6 +23,14 @@
                     <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment"
                         post.comments.length}}</a>
                 </div>
+
+                 <div>
+                    <select id="tag-dropdown" multiple="multiple">
+                        {{#each tags}}
+                        <option value="{{id}}">{{tag_text}}</option>
+                        {{/each}}
+                    </select>
+                </div>
                 
                 <button type="submit">Save post</button>
                 <button type="button" class="delete-post-btn">Delete post</button>

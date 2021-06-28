@@ -15,7 +15,7 @@
               <textarea id="post-text" name="post-text"></textarea>
             </div>
             <div>
-              <select id="tag-dropdown">
+              <select id="tag-dropdown" multiple="multiple">
                 {{#each tags}}
                 <option value="{{id}}">{{tag_text}}</option>
                 {{/each}}
@@ -73,7 +73,7 @@
 
       {{#each post.tags}}
       <h4>{{tag_text}}</h4>
-      {{/each}}
+      {{/each}} 
     {{/each}}
   </ol>
 </section>
