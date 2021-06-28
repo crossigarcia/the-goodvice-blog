@@ -1,10 +1,22 @@
+
+<h1>Handlebars JS Example</h1>
+
+    <select>
+        {{#each tag}}
+            <div class="text">
+            {{tag_text}}
+            </div>
+        {{/each}}
+    </select>
+
+ 
 <div>
-  <select>
-    {{#each Tag}}
-      <option value={{id}}>{{tag_text}}</option>
-      {{log Tag}}
+  <label for="tags">Search by tag:</label>
+  <select name="tags" id="tags">
+    {{#each tags as |tag|}}
+      <option value="{{id}}">{{tag_text}}</option>
     {{/each}}
   </select>
 </div>
 
-<script src="/javascript/searchtag.js"></script>
+
