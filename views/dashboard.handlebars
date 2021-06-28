@@ -14,6 +14,13 @@
               <label for="post-test">Content</label>
               <textarea id="post-text" name="post-text"></textarea>
             </div>
+            <div>
+              <select id="tag-dropdown">
+                {{#each tags}}
+                <option value="{{id}}">{{tag_text}}</option>
+                {{/each}}
+              </select>
+            </div>
             <button type="submit" class="btn">Create</button>
             <button type="reset" class="close" id="cancel">Cancel</button>
           </form>
