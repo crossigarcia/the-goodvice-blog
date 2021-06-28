@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const withAuth = require('../utils/auth');
-const { Post, User, Comment } = require('../models');
+const { Post, User, Comment, Tag } = require('../models');
 
 
 router.get('/', withAuth, (req, res) => {
@@ -29,19 +29,54 @@ router.get('/', withAuth, (req, res) => {
         {
           model: User,
           attributes: ['username']
+        },
+        {
+          model: Tag,
+          as: 'tags'
         }
       ]
     })
       .then(dbPostData => {
         // serialize data before passing to template
         const posts = dbPostData.map(post => post.get({ plain: true }));
-        res.render('dashboard', { posts, loggedIn: true });
+        Tag.findAll({
+          attributes: [
+            'id',
+            'tag_text'
+          ]
+        })
+        .then(dbTags => {
+          const tags = dbTags.map(tag => tag.get({ plain: true }));
+          res.render('dashboard', { tags, posts, loggedIn: true  } )
+        })
       })
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
       });
   });
+
+  // router.get('/', (req, res) => {
+  //   Tag.findAll({
+  //     where: {
+  //       // use the ID from the session
+  //       user_id: req.session.user_id
+  //     },
+  //     attributes: [
+  //       'id',
+  //       'tag_text'
+  //     ]
+  //   })
+  //   .then(dbTags => {
+  //     const tags = dbTags.map(tag => tag.get({ plain: true }));
+  //     res.render('dashboard', { tags } )
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //     res.status(500).json(err);
+  //   });
+  // });
+  
 
 
   router.get('/edit/:id', withAuth, (req, res) => {
