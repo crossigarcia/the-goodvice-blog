@@ -7,7 +7,12 @@ async function newFormHandler(event) {
 
     const tagIds = [];
     
-    tagIds.push(tagDrop.value);
+    for (var i = 0; i < tagDrop.options.length; i++) {
+        if (tagDrop.options[i].selected) {
+        tagIds.push(tagDrop.options[i].value);
+        }
+    }
+    //tagIds.push(tagDrop.value);
     console.log(tagIds);
   
     const response = await fetch(`/api/posts`, {
