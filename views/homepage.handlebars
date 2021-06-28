@@ -1,12 +1,12 @@
-<section class="row justify-content-center">
+<section class="row justify-content-between">
 
     {{#each posts as |post|}}
 
     {{> post-info post }}
 
-    {{!-- {{#each post.tags}}
-     <h4>{{tag_text}}</h4>
-    {{/each}} 
+    {{#each post.tags}}
+     <span class="badge rounded-pill">{{tag_text}}</span>
+    {{/each}}   
 
     {{/each}}
 

@@ -4,6 +4,10 @@
     /* rgb: 47, 212, 190 */
     --light-seafoam: #adfff4;
     /* rgb: 173, 255, 244 */
+    --light-grey: #749692;
+    /* rgb: 116, 150, 146 */
+    --dark-seafoam: #071c1a;
+    --med-seafoam: #219485;
 }
 
 body {
@@ -23,7 +27,7 @@ a {
 }
 
 .main-title:hover {
-    color: var(--light-seafoam);
+    color: var(--light-grey);
 }
 
 .nav-item {
@@ -33,12 +37,42 @@ a {
 }
 
 .nav-item:hover {
-    color: var(--light-seafoam);
+    color: var(--light-grey);
 }
 
-#search-bar {
-    text-align: center;
-    margin-bottom: 20px;
+.card {
+    padding: 0;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    box-shadow: 5px 5px 2px 1px rgba(116, 150, 146, .4);
+    color: var(--dark-seafoam);
+}
+
+.card-title a {
+    color: var(--med-seafoam);
+}
+
+.card-title a:hover {
+    color: var(--light-grey);
+}
+
+.card-text {
+    font-size: 20px;
+}
+
+.card-footer {
+    background-color: rgba(116, 150, 146, .2);
+    color: rgba(116, 150, 146, .5);
+}
+
+.card-footer .card-text {
+    font-size: 15px;
+}
+
+.badge {
+    background-color: var(--light-seafoam);
+    color: var(--dark-seafoam);
+    padding: 5px;
 }
 
 
