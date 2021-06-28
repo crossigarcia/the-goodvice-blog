@@ -24,6 +24,10 @@
             <button type="submit" class="btn">Create</button>
             <button type="reset" class="close" id="cancel">Cancel</button>
           </form>
+          <form method="post" action="/api/upload" enctype="multipart/form-data">
+          <input type="file" name="image" multiple/>
+          <button type="submit">Upload</button> 
+          </form>
         </div>
       </div>
     </div>

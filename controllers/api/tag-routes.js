@@ -73,7 +73,7 @@ router.get("/:id", (req, res) => {
 //     });
 // });
 
-router.post("/", withAuth, (req, res) => {
+router.post("/", (req, res) => {
   // check the session
   console.log("==inside tag create==")
   if (req.session) {
