@@ -7,7 +7,7 @@ async function newFormHandler(event) {
 
     const tagIds = [];
     
-    for (var i = 0; i < tagDrop.options.length; i++) {
+    for (let i = 0; i < tagDrop.options.length; i++) {
         if (tagDrop.options[i].selected) {
         tagIds.push(tagDrop.options[i].value);
         }
