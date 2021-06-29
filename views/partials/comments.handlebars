@@ -10,8 +10,10 @@
         {{format_date created_at}}
       </div>
       <div> 
-      <button type="button">Edit comment</button>
+        {{!-- {{#if loggedIn}} --}}
+      <button class="edit-btn" type="button">Edit comment</button>
       <button class="delete-comment-btn" type="submit">Delete comment</button>
+      {{!-- {{/if}} --}}
       </div>
     </section>
   {{/each}}

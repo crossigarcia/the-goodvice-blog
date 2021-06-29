@@ -12,6 +12,31 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/:id", (req, res) => {
+  Comment.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: [
+      "id",
+      "comment_text",
+      "user_id",
+      "post_id"
+    ],
+  })
+    .then((dbCommentData) => {
+      if (!dbCommentData) {
+        res.status(404).json({ message: "No Comment found with this id" });
+        return;
+      }
+      res.json(dbCommentData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 router.post("/", withAuth, (req, res) => {
   console.log("==========================");
   // check the session
@@ -32,15 +57,15 @@ router.post("/", withAuth, (req, res) => {
 
 router.put("/:id", withAuth, (req, res) => {
   console.log("==========================");
-  // update a comment by its id value 
+  // update a comment by its id value
   Comment.update(
     {
       comment_text: req.body.comment_text,
     },
     {
       where: {
-      id: req.params.id
-    }
+        id: req.params.id,
+      },
     }
   )
     .then((dbCommentData) => {
