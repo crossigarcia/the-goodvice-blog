@@ -7,16 +7,16 @@ async function editFormHandler(event) {
     const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
-    console.log(tagSelected);
-    const tagIds = [];
+  //   console.log(tagSelected);
+  //   const tagIds = [];
 
-    for (let i = 0; i < tagSelected.options.length; i++) {
+  //   for (let i = 0; i < tagSelected.options.length; i++) {
      
-      tagIds.push(tagSelected.options[i].value);
+  //     tagIds.push(tagSelected.options[i].value);
       
-  }
-    console.log(tagIds);
-    //const tagSelected = [];
+  // }
+  //   console.log(tagIds);
+  //   //const tagSelected = [];
     
 
     const response = await fetch(`/api/posts/${id}`, {
