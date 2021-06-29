@@ -4,7 +4,6 @@ const { Post, User, Comment, Tag, PostTag } = require("../models");
 const { Op } = require("sequelize");
 
 // search by tag
-// router.get("/tagged/:id", (req, res) => {
 router.get("/tagged/:query", (req, res) => {
   let term = req.params.query;
   switch (term) {
@@ -82,8 +81,6 @@ router.get("/tagged/:query", (req, res) => {
       res.status(500).json(err);
     });
 });
-
-// id to tag_text
 
 router.get("/pleasesir/search=:query", (req, res) => {
   let query = req.params.query;
