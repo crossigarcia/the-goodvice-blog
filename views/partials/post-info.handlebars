@@ -24,6 +24,24 @@
         </p>
         <p class="card-text"><small class="text-muted">Posted by {{user.username}} on {{format_date created_at}}</small></p>
       </div>
+      <div>
+        {{#each tags}}
+         <h6 class="badge bg-secondary">{{tag_text}}</h6>
+        {{/each}}
+      </div>
     </div>
   </div>
 </div>
+
+<div class="card-body">
+    {{> comments comments }}
+</div>
+
+{{!-- <div class="card" style="width: 18rem;">
+    <div class="card-body">
+        {{> comments comments }}
+    </div>
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{/if}}
+</div> --}}
