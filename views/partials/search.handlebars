@@ -1,4 +1,4 @@
-    <select>
+    {{!-- <select>
         {{#each tag}}
             <div class="text">
             {{tag_text}}
@@ -14,6 +14,30 @@
       <option value="{{id}}">{{tag_text}}</option>
     {{/each}}
   </select>
+</div> --}}
+
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Search</button>
+  <div id="myDropdown" class="dropdown-content">
+    {{!-- <input type="text" placeholder="Search anything" id="myInput" onkeyup="filterFunction()">
+     --}}
+    <div class="search-container">
+      {{!-- <form action="/action_page.php"> --}}
+      <form action="/search/">
+        <input type="text" placeholder="Search anything" id="myInput" name="search">
+        {{!-- <button type="submit"><i class="fa fa-search"></i></button> --}}
+      </form>
+    </div>
+    <a class='searchTag' href="http://localhost:3001/search/tagged/plants">Plants</a>
+    {{!-- <a class='searchTag' href="https://the-goodvice-blog.herokuapp.com/search/tagged/plants">Plants</a> --}}
+
+    <a class='searchTag' href="http://localhost:3001/search/tagged/pets">Pets</a>
+    {{!-- <a class='searchTag' href="https://the-goodvice-blog.herokuapp.com/search/tagged/pets">Pets</a> --}}
+
+    <a class='searchTag' href="https://the-goodvice-blog.herokuapp.com/search/tagged/food">Food</a>
+    <a class='searchTag' href="https://the-goodvice-blog.herokuapp.com/search/tagged/household">Household</a>
+    <a class='searchTag' href="https://the-goodvice-blog.herokuapp.com/search/tagged/general">General</a>
+  </div>
 </div>
 
-
+<script src="/javascript/search.js"></script>
