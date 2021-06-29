@@ -105,7 +105,7 @@ router.get("/pleasesir/search=:query", (req, res) => {
 });
 
 // search by query
-router.get("/?search=:query", (req, res) => {
+router.get("/q=:query", (req, res) => {
   let query = req.params.query;
   Post.findAll({
     where: {
@@ -124,44 +124,12 @@ router.get("/?search=:query", (req, res) => {
     },
     attributes: ["title", "post_text"],
   })
-    .then((dbSearch) => {
-      if (!dbSearch) {
-        res.status(404).json({ message: "No posts found, apologies." });
+    .then((dbTagData) => {
+      if (!dbTagData) {
+        res.status(404).json({ message: "No tag found with this id" });
         return;
       }
-      let postIds = dbSearch.map(
-        (postTag) => postTag.get({ plain: true }).post_id
-      );
-      return Post.findAll({
-        where: {
-          id: { [Op.in]: postIds },
-        },
-        attributes: ["id", "title", "post_text", "created_at"],
-        include: [
-          {
-            model: Comment,
-            attributes: [
-              "id",
-              "comment_text",
-              "post_id",
-              "user_id",
-              "created_at",
-            ],
-            include: {
-              model: User,
-              attributes: ["username"],
-            },
-          },
-          {
-            model: User,
-            attributes: ["username"],
-          },
-          {
-            model: Tag,
-            as: "tags",
-          },
-        ],
-      });
+      res.json(dbTagData);
     })
     .catch((err) => {
       console.log(err);
