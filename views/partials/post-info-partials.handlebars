@@ -2,5 +2,8 @@
     <div class="card-header">
         <h2><a href="/dashboard/edit/{{id}}">{{title}}</a></h2>
         <span>{{format_date created_at}}</span>
+        {{#each tags}}
+        <h4>{{tag_text}}</h4>
+        {{/each}}
     </div>
 </div>

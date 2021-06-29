@@ -76,6 +76,10 @@ a {
     padding: 0;
 }
 
+.card-title {
+    margin: 15px;
+}
+
 .card-title a {
     color: var(--dark-seafoam);
 }
@@ -87,6 +91,7 @@ a {
 .card-text {
     font-size: 15px;
     color: var(--light-grey);
+    margin: 10px;
 }
 
 .card-footer {
@@ -97,11 +102,24 @@ a {
 .card-footer .card-text {
     font-size: 15px;
     color: rgba(116, 150, 146, .5);
+    margin: 5px;
 }
 
 .badge {
     color: var(--dark-seafoam);
     background-color: rgba(47, 212, 190, .6);
     padding: 5px 15px 5px 15px;
-    margin: 5px;
+    margin: 10px;
 }
+
+.profile-info {
+    background-color: rgba(47, 212, 190, .3);
+    box-shadow: 5px 5px 2px 1px rgba(116, 150, 146, .2);
+    padding: 10px;
+    color: var(--dark-seafoam);
+}
+
+.add-post-modal {
+    margin: 15px;
+}
+
