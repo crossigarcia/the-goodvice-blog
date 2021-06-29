@@ -82,28 +82,6 @@ router.get("/tagged/:query", (req, res) => {
     });
 });
 
-router.get("/pleasesir/search=:query", (req, res) => {
-  let query = req.params.query;
-  Post.findAll({
-    where: {
-      [Op.or]: [
-        {
-          title: {
-            [Op.like]: `%${query}%`,
-          },
-        },
-        {
-          post_text: {
-            [Op.like]: `%${query}%`,
-          },
-        },
-      ],
-    },
-    attributes: ["title", "post_text"],
-  });
-  return res.json;
-});
-
 // search by query
 router.get("/q=:query", (req, res) => {
   let query = req.params.query;
