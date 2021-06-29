@@ -2,11 +2,7 @@
 
     {{#each posts as |post|}}
 
-    {{> post-info post }}
-
-    {{#each post.tags}}
-     <span class="badge rounded-pill">{{tag_text}}</span>
-    {{/each}}   
+    {{> post-info post }} 
 
     {{/each}}
 
