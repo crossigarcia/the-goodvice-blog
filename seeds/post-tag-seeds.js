@@ -19,7 +19,7 @@ const postTagData = [
         tag_id: 2,
     },
     {
-        post_id: 5,
+        post_id: 3,
         tag_id: 1,
     },
 ];
