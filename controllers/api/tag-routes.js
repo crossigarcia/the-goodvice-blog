@@ -155,19 +155,6 @@ router.get("/q=:query", (req, res) => {
     });
 });
 
-// router.post("/", (req, res) => {
-//   // check the session
-//   console.log("==inside tag create==")
-//   if (req.session) {
-//     Tag.create({
-//       tag_text: req.body.tag_text,
-//     })
-//       .then((dbCommentData) => res.json(dbCommentData))
-//       .catch((err) => {
-//         console.log(err);
-//         res.status(400).json(err);
-//       });
-//   }
-// });
+
 
 module.exports = router;
