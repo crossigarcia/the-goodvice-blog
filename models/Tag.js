@@ -21,6 +21,10 @@ Tag.init(
             len: [3]
           }
       },
+      tag_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      }
       // user_id: {
       //   type: DataTypes.INTEGER,
       //   references: {
