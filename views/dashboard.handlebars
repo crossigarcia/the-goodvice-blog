@@ -1,11 +1,7 @@
-<section>
-  <div class="profile-info">
-    {{!-- logged in users username --}}
-    <h2 class="your-post">Your Dashboard</h2>
-  </div>
-
+<section class="container">
   <section class="add-post-modal">
-    <button id="button" class="add-post-btn" data-modal="modalOne">New Post</button>
+    <h2 class="d-inline-block">Your Dashboard</h2>
+    <button id="button" class="add-post-btn" data-modal="modalOne"><span class="plus">&plus;</span></button>
     <div id="modalOne" class="modal">
       <div class="modal-content card">
         <span class="close">&times;</span>
@@ -31,8 +27,8 @@
             <button type="reset" class="close" id="cancel">Cancel</button>
           </form>
           <form method="post" action="/api/upload" enctype="multipart/form-data">
-          <input type="file" name="image" multiple/>
-          <button type="submit">Upload</button> 
+            <input type="file" name="image" multiple />
+            <button type="submit">Upload</button>
           </form>
         </div>
       </div>
@@ -74,13 +70,18 @@
     </script>
   </section>
 
-  {{#if posts.length}}
-  <ol>
-    {{#each posts as |post|}}
-      {{> post-info-partials post}} 
-    {{/each}}
-  </ol>
+
+  <div class="row">
+    {{#if posts.length}}
+    <ol>
+      {{#each posts as |post|}}
+      {{> post-info-partials post}}
+      {{/each}}
+    </ol>
+    {{/if}}
+  </div>
+  
 </section>
-{{/if}}
+
 
 <script src="/javascript/add-post.js"></script>

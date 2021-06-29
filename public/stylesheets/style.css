@@ -112,14 +112,26 @@ a {
     margin: 10px;
 }
 
-.profile-info {
+.add-post-modal {
     background-color: rgba(47, 212, 190, .3);
     box-shadow: 5px 5px 2px 1px rgba(116, 150, 146, .2);
-    padding: 10px;
     color: var(--dark-seafoam);
+    margin-bottom: 15px;
 }
 
-.add-post-modal {
-    margin: 15px;
+.add-post-modal h2 {
+    margin: 20px 30px 25px 20px;
+}
+
+.add-post-btn {
+    border: none;
+    color: var(--dark-seafoam);
+    padding: 5px 15px 5px 15px;
+    background-color: rgba(47, 212, 190, 0);
+}
+
+.plus {
+    font-size: 40px;
+    padding: 0;
 }
 
