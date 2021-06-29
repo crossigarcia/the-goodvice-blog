@@ -26,6 +26,14 @@
 
                  <div>
                     <select id="tag-dropdown" multiple="multiple">
+                        {{ log post}}
+                        <i class="fas fa-trash"></i>
+                        {{#each post.tags}}
+                        <option value="{{id}}">{{tag_text}}  <i class="fas fa-trash"></i></option>
+                        {{/each}}
+                    </select>
+
+                     <select id="all-tag-dropdown" multiple="multiple">
                         {{#each tags}}
                         <option value="{{id}}">{{tag_text}}</option>
                         {{/each}}

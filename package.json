@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "bcrypt": "^4.0.1",
     "connect-session-sequelize": "^6.1.1",
     "dotenv": "^8.2.0",

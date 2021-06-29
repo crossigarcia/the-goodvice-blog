@@ -3,17 +3,29 @@ async function editFormHandler(event) {
 
     const title = document.querySelector('input[name="post-title"]').value.trim();
     const post_text = document.querySelector('input[name="post-text"]').value;
-    const tagDrop = document.getElementById('tag-dropdown').value;
+    const tagSelected = document.getElementById('tag-dropdown');
     const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
+    console.log(tagSelected);
+    const tagIds = [];
+
+    for (let i = 0; i < tagSelected.options.length; i++) {
+     
+      tagIds.push(tagSelected.options[i].value);
+      
+  }
+    console.log(tagIds);
+    //const tagSelected = [];
+    
 
     const response = await fetch(`/api/posts/${id}`, {
         
         method: 'PUT',
         body: JSON.stringify({
             title,
-            post_text
+            post_text,
+            
         }),
         headers: {
             'Content-Type': 'application/json'
@@ -28,32 +40,6 @@ async function editFormHandler(event) {
     }
 }
 
-async function tagHandler(event) {
-    const tag_id = event.target.value;
-    const tag_state = event.target.checked;
-    const post_id = document.querySelector('input[name="id"]').value;
-  
-    const fetchOptions = {
-      method: (tag_state ? 'POST' : 'DELETE'),
-      body: JSON.stringify({
-        post_id,
-        tag_id
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-  
-    console.log(fetchOptions);
-    const response = await fetch(`/api/posts/tag`, fetchOptions);
-  
-    if (response.ok) {
-      console.log('success');
-    } else {
-      event.target.checked = !tag_state;
-      alert(response.statusText);
-    }
-  }
 
-document.querySelector('.tag-inputs').addEventListener('change', tagHandler);
+
 document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);
