@@ -5,7 +5,9 @@
     /* rgb: 173, 255, 244 */
     --light-grey: #749692;
     /* rgb: 116, 150, 146 */
+    --lighter-grey: #9bd8d0;
     --dark-seafoam: #14554e;
+    /* rgb: 20, 85, 78 */
 }
 
 body {
@@ -204,4 +206,51 @@ form > div {
   width: 100%; 
   object-fit: cover;
 }
+
+/* modal */
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: var(--lighter-grey);
+  margin: 20% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 95%; /* Could be more or less, depending on screen size */
+}
+
+.modal-content input {
+  color: var(--lighter-grey);
+}
+
+/* The Close Button */
+.close {
+  float: right;
+}
+
+.modal-btn {
+  background-color: rgba(20, 85, 78, .5);
+}
+
+.upload-btn {
+  background-color: rgba(20, 85, 78, .4);
+  margin-top: 10px;
+}
+
+#main-modal-btn {
+  margin-top: 5%;
+}
+
 
