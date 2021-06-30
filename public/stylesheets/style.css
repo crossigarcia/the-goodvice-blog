@@ -57,6 +57,11 @@ a {
   font-size: 20px;
 }
 
+#navbarDropdown:hover {
+  color: var(--light-seafoam);
+}
+
+
 /* .search-btn {
     border: 1px solid var(--light-seafoam);
     color: var(--light-seafoam);
