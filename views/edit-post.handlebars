@@ -9,14 +9,14 @@
         <div class="card-body">
             <form class="edit-post-form">
                 <div>
-                    <label for="post-title">Title</label>
-                    <input name="post-title" type="text" value="{{post.title}}" />
+                    <label for="post-title">update your question:</label>
+                    <input name="post-title" type="text" class="form-control" value="{{post.title}}" />
                 </div>
                 <div>
-                    <label for="post-text">Content</label>
-                    <input name="post-text" type="text" value="{{post.post_text}}" />
+                    <label for="post-text">update details:</label>
+                    <input class="form-control" name="post-text" type="text" value="{{post.post_text}}" />
                 </div>
-                <div>
+                <div class="post-data">
                     Posted by you on {{format_date
                     post.created_at}}
                     |
@@ -39,9 +39,10 @@
                         {{/each}}
                     </select>
                 </div> --}}
-                
-                <button type="submit">Save post</button>
-                <button type="button" class="delete-post-btn">Delete post</button>
+                <div class="row row-cols-3 justify-content-around">
+                    <button type="submit" class="col modal-btn">Save post</button>
+                    <button type="button" class="delete-post-btn col modal-btn">Delete post</button>
+                </div>
             </form>
         </div>
     </div>
