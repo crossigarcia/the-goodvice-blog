@@ -5,7 +5,9 @@
     /* rgb: 173, 255, 244 */
     --light-grey: #749692;
     /* rgb: 116, 150, 146 */
+    --lighter-grey: #9bd8d0;
     --dark-seafoam: #14554e;
+    /* rgb: 20, 85, 78 */
 }
 
 body {
@@ -23,7 +25,6 @@ a {
 
 .navbar {
     background-color: var(--seafoam);
-    padding: 10px;
     margin-bottom: 15px;
 }
 
@@ -43,7 +44,7 @@ a {
 
 .nav-text {
     color: white;
-    font-size: 20px;
+    font-size: 25px;
     margin: 15px;
 }
 
@@ -51,7 +52,19 @@ a {
     color: var(--light-seafoam);
 }
 
-.search-btn {
+#navbarDropdown {
+  color: white;
+  padding-top: 13px;
+  padding-left: 15px;
+  font-size: 20px;
+}
+
+#navbarDropdown:hover {
+  color: var(--light-seafoam);
+}
+
+
+/* .search-btn {
     border: 1px solid var(--light-seafoam);
     color: var(--light-seafoam);
 }
@@ -60,7 +73,7 @@ a {
     border: 1px solid var(--light-seafoam);
     background-color: var(--light-seafoam);
     color: var(--seafoam);
-}
+} */
 
 .card {
     padding: 0;
@@ -100,79 +113,93 @@ a {
 }
 
 .card-footer .card-text {
-    font-size: 15px;
-    color: rgba(116, 150, 146, .5);
-    margin: 5px;
+  font-size: 15px;
+  color: rgba(116, 150, 146, .5);
+  margin: 5px;
 }
 
 .badge {
-    color: var(--dark-seafoam);
-    background-color: rgba(47, 212, 190, .6);
-    padding: 5px 15px 5px 15px;
-    margin: 10px;
+  color: var(--dark-seafoam);
+  background-color: rgba(47, 212, 190, .6);
+  padding: 5px 15px 5px 15px;
+  margin: 10px;
 }
 
 .add-post-modal {
-    background-color: rgba(47, 212, 190, .3);
-    box-shadow: 5px 5px 2px 1px rgba(116, 150, 146, .2);
-    color: var(--dark-seafoam);
-    margin-bottom: 15px;
+  background-color: rgba(47, 212, 190, .3);
+  box-shadow: 5px 5px 2px 1px rgba(116, 150, 146, .2);
+  color: var(--dark-seafoam);
+  margin-bottom: 15px;
 }
 
 .add-post-modal h2 {
-    margin: 20px 30px 25px 20px;
+  margin: 20px 30px 25px 20px;
 }
 
 .add-post-btn {
-    border: none;
-    color: var(--dark-seafoam);
-    padding: 5px 15px 5px 15px;
-    background-color: rgba(47, 212, 190, 0);
+  border: none;
+  color: var(--dark-seafoam);
+  padding: 5px 15px 5px 15px;
+  background-color: rgba(47, 212, 190, 0);
 }
 
 .plus {
-    font-size: 40px;
-    padding: 0;
+  font-size: 40px;
+  padding: 0;
 }
 
 .comment-form {
     margin-bottom: 5%;
-  }
-
-.comment {
-    padding: 1%;
-    margin-bottom: 1%;
-    width: initial;
-  }
-  
-  .comment:nth-child(odd) {
-    background-color: var(--light-grey);
-  }
-
-  button {
-    background-color: var(--seafoam);
-    border: 0;
-    padding: 1%;
-    color: white;
-    font-weight: bold;
-    transition: background-color 0.1s;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  button:hover {
-    background-color: var(--dark-seafoam);
-  }
-
-  textarea,
-input {
-  padding: 0.5%;
-  border-radius: 5px;
-  border: 1px solid #ccc;
 }
 
-textarea:focus,
-input:focus {
+.comment {
+  padding: 3%;
+  width: initial;
+  background-color: rgba(116, 150, 146, .2);
+}
+
+.comment:nth-child(odd) {
+  background-color: rgba(116, 150, 146, .7);
+}
+
+.comment-body {
+  font-size: 17px;
+}
+
+.comment-user-info {
+  color: var(--light-grey);
+  margin: 15px auto 15px auto;
+}
+
+button {
+  background-color: rgba(47, 212, 190, .8);
+  border: 0;
+  padding: 7px 10px 7px 10px;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.1s;
+  cursor: pointer;
+  border-radius: 12px;
+  margin: 10px auto 10px auto;
+}
+
+.add-comment-btn {
+  width:100%;
+  display:block;
+}
+
+
+button:hover {
+  background-color: var(--dark-seafoam);
+}
+
+textarea, input {
+padding: 0.5%;
+border-radius: 5px;
+border: 1px solid #ccc;
+}
+
+textarea:focus, input:focus {
   outline: none;
   border: 1px solid var(--seafoam);
 }
@@ -186,9 +213,9 @@ form > div {
     margin-bottom: 2%;
   }
   
-  form label {
-    display: block;
-  }
+form label {
+  display: block;
+}
 
 .post-img {
   height: 100%; 
@@ -196,55 +223,56 @@ form > div {
   object-fit: cover;
 }
 
-/* dropdown */
-.dropbtn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
+/* modal */
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #3e8e41;
+/* Modal Content/Box */
+.modal-content {
+  background-color: var(--lighter-grey);
+  margin: 20% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 95%; /* Could be more or less, depending on screen size */
 }
 
-#myInput {
-  box-sizing: border-box;
-  background-image: url('searchicon.png');
-  background-position: 14px 12px;
-  background-repeat: no-repeat;
-  font-size: 16px;
-  padding: 14px 20px 12px 45px;
-  border: none;
-  border-bottom: 1px solid #ddd;
+/* The Close Button */
+.close {
+  float: right;
 }
 
-#myInput:focus {outline: 3px solid #ddd;}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
+.modal-btn {
+  background-color: rgba(20, 85, 78, .5);
+  box-shadow: 3px 3px 2px 1px rgba(116, 150, 146, .3);
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f6f6f6;
-  min-width: 230px;
-  overflow: auto;
-  border: 1px solid #ddd;
-  z-index: 1;
+.modal-btn:hover {
+  background-color: var(--seafoam);
 }
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+.upload-btn {
+  background-color: rgba(20, 85, 78, .4);
+  margin-top: 10px;
+  width: 100%;
 }
 
-.dropdown a:hover {background-color: #ddd;}
+#main-modal-btn {
+  margin-top: 5%;
+}
 
-.show {display: block;}
+#dash-link {
+  color: var(--dark-seafoam);
+}
+
+
