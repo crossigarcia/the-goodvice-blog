@@ -23,7 +23,6 @@ a {
 
 .navbar {
     background-color: var(--seafoam);
-    padding: 10px;
     margin-bottom: 15px;
 }
 
@@ -43,7 +42,7 @@ a {
 
 .nav-text {
     color: white;
-    font-size: 20px;
+    font-size: 25px;
     margin: 15px;
 }
 
@@ -51,7 +50,14 @@ a {
     color: var(--light-seafoam);
 }
 
-.search-btn {
+#navbarDropdown {
+  color: white;
+  padding-top: 13px;
+  padding-left: 15px;
+  font-size: 20px;
+}
+
+/* .search-btn {
     border: 1px solid var(--light-seafoam);
     color: var(--light-seafoam);
 }
@@ -60,7 +66,7 @@ a {
     border: 1px solid var(--light-seafoam);
     background-color: var(--light-seafoam);
     color: var(--seafoam);
-}
+} */
 
 .card {
     padding: 0;
@@ -164,15 +170,13 @@ a {
     background-color: var(--dark-seafoam);
   }
 
-  textarea,
-input {
+  textarea, input {
   padding: 0.5%;
   border-radius: 5px;
   border: 1px solid #ccc;
 }
 
-textarea:focus,
-input:focus {
+textarea:focus, input:focus {
   outline: none;
   border: 1px solid var(--seafoam);
 }
@@ -196,55 +200,3 @@ form > div {
   object-fit: cover;
 }
 
-/* dropdown */
-.dropbtn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #3e8e41;
-}
-
-#myInput {
-  box-sizing: border-box;
-  background-image: url('searchicon.png');
-  background-position: 14px 12px;
-  background-repeat: no-repeat;
-  font-size: 16px;
-  padding: 14px 20px 12px 45px;
-  border: none;
-  border-bottom: 1px solid #ddd;
-}
-
-#myInput:focus {outline: 3px solid #ddd;}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f6f6f6;
-  min-width: 230px;
-  overflow: auto;
-  border: 1px solid #ddd;
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown a:hover {background-color: #ddd;}
-
-.show {display: block;}
