@@ -104,10 +104,14 @@ router.get("/q=:query", (req, res) => {
   })
     .then((dbTagData) => {
       if (!dbTagData) {
-        res.status(404).json({ message: "No posts found." });
+        res.status(404).json({ message: "No posts found" });
         return;
       }
-      res.json(dbTagData);
+      // serialize the data
+      const post = dbTagData.get({ plain: true });
+
+      // pass data to template
+      res.render("homepage", { post, loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.log(err);

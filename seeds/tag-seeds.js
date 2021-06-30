@@ -6,10 +6,10 @@ const tagdata = [
     tag_text: "plants"
   },
   {
-    tag_text: "food"
+    tag_text: "pets"
   },
   {
-    tag_text: "pets"  
+    tag_text: "food"  
   },
   {
     tag_text: "household"

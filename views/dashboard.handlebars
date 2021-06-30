@@ -2,7 +2,8 @@
   <section class="add-post-modal">
     <h2 class="d-inline-block">Your Dashboard</h2>
     <button id="button" class="add-post-btn" data-modal="modalOne"><span class="plus">&plus;</span></button>
-    <div id="modalOne" class="modal">
+    <div id="modalOne" class="modal" tabindex="-1">
+      {{!-- <div class="modal-dialog"></div> --}}
       <div class="modal-content card">
         <span class="close">&times;</span>
         <div class="card-header">Create New Post</div>
