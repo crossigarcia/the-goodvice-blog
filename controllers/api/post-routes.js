@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Post, Tag, User, Comment, PostTag } = require('../../models');
 const withAuth = require('../../utils/auth');
+const fs = require('fs');
 
 
 // get all users
@@ -78,11 +79,16 @@ router.get('/', (req, res) => {
 // create new post
 router.post('/', withAuth, (req, res) => {
   console.log(req.body)
+  const pathData = fs.readFileSync('./images/path.txt', "utf8", function(err, data){
+    if(err) throw err;
+    res.send(data);
+  });
     Post.create({
       title: req.body.title,
       post_text: req.body.post_text,
       tag_id: req.body.tag_id,
-      // image_url: req.body.image_url,
+      image_url: pathData,
+      //image_url: req.body.image_url,
       user_id: req.session.user_id
     })
     .then((post) => {

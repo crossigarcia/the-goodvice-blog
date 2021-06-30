@@ -22,17 +22,14 @@ var fileStorageEngine = multer.diskStorage ({
   
   router.post('/', multer_Upload.single('image'), (req, res) => {
     console.log(req.file);
-    const cloud_upload = cloudinary.uploader.upload(req.file.path, function(error, result) {
-        console.log("File Name: ", result.original_filename, "\nCreated at: ", result.created_at, "\nSecure url: ", result.secure_url,
-        "\nSignature: ", result.signature, "\nPublicId: ", result.public_id);
+    cloudinary.uploader.upload(req.file.path, function(error, result) {
+        console.log("File Name: ", result.original_filename, "\nCreated at: ", result.created_at, "\n Secure url: ", result.secure_url,
+        "\nSignature: ", result.signature);
+
+        fs.writeFileSync('./images/path.txt', result.secure_url);
     });
 
     console.log("Result:");
-
-    const post_details = {
-        title: req.body.title,
-        image: cloud_upload.public_id
-    }
 
     res.send("Upload Complete");
   });
