@@ -2,40 +2,91 @@
   <section class="add-post-modal">
     <h2 class="d-inline-block">Your Dashboard</h2>
     <button id="button" class="add-post-btn" data-modal="modalOne"><span class="plus">&plus;</span></button>
-    <div id="modalOne" class="modal" tabindex="-1">
-      {{!-- <div class="modal-dialog"></div> --}}
-      <div class="modal-content card">
-        <span class="close">&times;</span>
-        <div class="card-header">Create New Post</div>
-        <div class="card-body">
+    <div id="modalOne" class="modal">
+      <div class="modal-content">
+        <div>
+          <h5>Create New Post</h5>
+        </div>
+
+        <div>
           <form class="new-post-form">
             <div>
-              <label for="post-title">Title</label>
-              <input type="text" id="post-title" name="post-title" />
+              <input type="text" id="post-title" class="form-control" name="post-title" placeholder="your question" />
             </div>
+
             <div>
-              <label for="post-text">Content</label>
-              <textarea id="post-text" name="post-text"></textarea>
+              <textarea id="post-text" class="form-control" name="post-text" placeholder="details"></textarea>
             </div>
-            <div>
-              <select id="tag-dropdown" multiple="multiple">
+            
+            <div class="form-group">
+              <label for="exampleFormControlSelect2">select all that apply:</label>
+              <select multiple="multiple" required class="form-control" id="tag-dropdown">
                 {{#each tags}}
                 <option value="{{id}}">{{tag_text}}</option>
                 {{/each}}
               </select>
             </div>
-            <button type="submit" class="btn" id="post-btn">Create</button>
-            <button type="reset" class="close" id="cancel">Cancel</button>
+
+            <div id="main-modal-btn" class="row row-cols-3 justify-content-around">
+              <button type="submit" class="col modal-btn" id="post-btn">Create</button>
+              <button type="reset" class="close col modal-btn" id="cancel">Cancel</button>
+            </div>
           </form>
-          <form method="post" action="/api/upload" enctype="multipart/form-data">
-            <input type="file" name="image" multiple />
-            <button type="submit">Upload</button>
-          </form>
+          <div class="add-img-form">
+            <form method="post" action="/api/upload" enctype="multipart/form-data">
+              <input type="file" class="form-control" name="image" multiple />
+              <button type="submit" class="modal-btn upload-btn">Upload</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  {{!-- new modal
+  <section class="add-post-modal">
+    <h2 class="d-inline-block">Your Dashboard</h2>
+    <button type="button" class="btn btn-primary add-post-btn" data-bs-toggle="modal" data-bs-target="#addPostModal">
+      <span class="plus">&plus;</span>
+    </button>
+  
+    <div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addPostModalLabel">Create New Post</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="new-post-form">
+              <div>
+                <label for="post-title">Title</label>
+                <input type="text" id="post-title" name="post-title" />
+              </div>
+              <div>
+                <label for="post-text">Content</label>
+                <textarea id="post-text" name="post-text"></textarea>
+              </div>
+              <div>
+                <select id="tag-dropdown" multiple="multiple">
+                  {{#each tags}}
+                  <option value="{{id}}">{{tag_text}}</option>
+                  {{/each}}
+                </select>
+              </div>
+              <button type="submit" class="btn" id="post-btn">Create</button>
+              <button type="reset" class="close" id="cancel">Cancel</button>
+            </form>
+            <form method="post" action="/api/upload" enctype="multipart/form-data">
+              <input type="file" name="image" multiple />
+              <button type="submit">Upload</button>
+            </form>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section> --}}
 
   <div class="row">
     {{#if posts.length}}
