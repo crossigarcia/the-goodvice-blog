@@ -40,15 +40,23 @@
               <a class="nav-link" href="/login"><span class="nav-text">login</span></a>
             </li>
             {{/if}}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                filter by category
+              </a>
+              {{> search}}
+            </li>
           </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn search-btn" type="submit">Search</button>
-          </form>
+          {{!-- <form class="d-flex">
+            <input id="search-text" class="form-control me-2" type="search" name="srch" placeholder="Search" aria-label="Search">
+            <button id="text-search" class="btn search-btn" type="submit">Search</button>
+          </form> --}}
+          
         </div>
       </div>
     </nav>
-
+    
   </header>
 
   <main class="container">
@@ -62,6 +70,7 @@
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
   {{/if}}
+  {{!-- <script src="/javascript/search.js"></script> --}}
 </body>
 
 </html>

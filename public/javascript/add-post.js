@@ -34,41 +34,39 @@ if (event.target == modal) {
 }
 
 async function newFormHandler(event) {
-    event.preventDefault();
-  
-    const title = document.querySelector('input[name="post-title"]').value;
-    const post_text = document.querySelector('textarea[name="post-text"]').value;
-    const tagDrop = document.getElementById('tag-dropdown');
+  event.preventDefault();
 
-    const tagIds = [];
-    
-    for (let i = 0; i < tagDrop.options.length; i++) {
-        if (tagDrop.options[i].selected) {
-        tagIds.push(tagDrop.options[i].value);
-        }
-    }
-    //tagIds.push(tagDrop.value);
-    console.log(tagIds);
-  
-    const response = await fetch(`/api/posts`, {
-        method: 'POST',
-        body: JSON.stringify({
-            title,
-            post_text,
-            tagIds
-        }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-  
-    if (response.ok) {
-        document.location.replace('/');
-    }
-    else {
-        alert(response.statusText);
+  const title = document.querySelector('input[name="post-title"]').value;
+  const post_text = document.querySelector('textarea[name="post-text"]').value;
+  const tagDrop = document.getElementById("tag-dropdown");
+
+  const tagIds = [];
+
+  for (let i = 0; i < tagDrop.options.length; i++) {
+    if (tagDrop.options[i].selected) {
+      tagIds.push(tagDrop.options[i].value);
     }
   }
+  
+
+  const response = await fetch(`/api/posts`, {
+    method: "POST",
+    body: JSON.stringify({
+      title,
+      post_text,
+      tagIds,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.ok) {
+    document.location.replace("/dashboard");
+  } else {
+    alert(response.statusText);
+  }
+}
   
   
 function openTheForm() {
