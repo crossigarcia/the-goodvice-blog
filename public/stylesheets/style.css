@@ -275,4 +275,20 @@ form label {
   color: var(--dark-seafoam);
 }
 
+.edit-post-form {
+  text-align: start;
+  padding: 10px;
+}
+
+.edit-post-form div {
+  margin-top: 25px;
+}
+
+.post-data {
+  color: var(--light-grey);
+}
+
+.edit-post-form a{
+  color: var(--light-grey);
+}
 
