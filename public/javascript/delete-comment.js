@@ -1,4 +1,4 @@
-async function deleteCommentFormHandler(event) {
+async function deleteComment(event) {
   event.preventDefault();
 
   const id = window.location.toString().split("/")[
@@ -18,4 +18,4 @@ async function deleteCommentFormHandler(event) {
 
 document
   .querySelector(".delete-comment-btn")
-  .addEventListener("submit", deleteCommentFormHandler);
+  .addEventListener("click", deleteComment);
