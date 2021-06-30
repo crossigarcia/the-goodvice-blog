@@ -20,26 +20,24 @@
             
             <div class="form-group">
               <label for="exampleFormControlSelect2">select all that apply:</label>
-              <select multiple="multiple" class="form-control" id="tag-dropdown">
+              <select multiple="multiple" required class="form-control" id="tag-dropdown">
                 {{#each tags}}
                 <option value="{{id}}">{{tag_text}}</option>
                 {{/each}}
               </select>
             </div>
 
-            <div class="add-img-form">
-              <form method="post" action="/api/upload" enctype="multipart/form-data">
-                <input type="file" class="form-control" name="image" multiple />
-                <button type="submit" class="modal-btn upload-btn">Upload</button>
-              </form>
-            </div>
-            
-
             <div id="main-modal-btn" class="row row-cols-3 justify-content-around">
               <button type="submit" class="col modal-btn" id="post-btn">Create</button>
               <button type="reset" class="close col modal-btn" id="cancel">Cancel</button>
             </div>
           </form>
+          <div class="add-img-form">
+            <form method="post" action="/api/upload" enctype="multipart/form-data">
+              <input type="file" class="form-control" name="image" multiple />
+              <button type="submit" class="modal-btn upload-btn">Upload</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

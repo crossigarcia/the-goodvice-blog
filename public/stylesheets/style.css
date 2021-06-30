@@ -113,74 +113,90 @@ a {
 }
 
 .card-footer .card-text {
-    font-size: 15px;
-    color: rgba(116, 150, 146, .5);
-    margin: 5px;
+  font-size: 15px;
+  color: rgba(116, 150, 146, .5);
+  margin: 5px;
 }
 
 .badge {
-    color: var(--dark-seafoam);
-    background-color: rgba(47, 212, 190, .6);
-    padding: 5px 15px 5px 15px;
-    margin: 10px;
+  color: var(--dark-seafoam);
+  background-color: rgba(47, 212, 190, .6);
+  padding: 5px 15px 5px 15px;
+  margin: 10px;
 }
 
 .add-post-modal {
-    background-color: rgba(47, 212, 190, .3);
-    box-shadow: 5px 5px 2px 1px rgba(116, 150, 146, .2);
-    color: var(--dark-seafoam);
-    margin-bottom: 15px;
+  background-color: rgba(47, 212, 190, .3);
+  box-shadow: 5px 5px 2px 1px rgba(116, 150, 146, .2);
+  color: var(--dark-seafoam);
+  margin-bottom: 15px;
 }
 
 .add-post-modal h2 {
-    margin: 20px 30px 25px 20px;
+  margin: 20px 30px 25px 20px;
 }
 
 .add-post-btn {
-    border: none;
-    color: var(--dark-seafoam);
-    padding: 5px 15px 5px 15px;
-    background-color: rgba(47, 212, 190, 0);
+  border: none;
+  color: var(--dark-seafoam);
+  padding: 5px 15px 5px 15px;
+  background-color: rgba(47, 212, 190, 0);
 }
 
 .plus {
-    font-size: 40px;
-    padding: 0;
+  font-size: 40px;
+  padding: 0;
 }
 
 .comment-form {
     margin-bottom: 5%;
-  }
+}
 
 .comment {
-    padding: 1%;
-    margin-bottom: 1%;
-    width: initial;
-  }
-  
-  .comment:nth-child(odd) {
-    background-color: var(--light-grey);
-  }
+  padding: 3%;
+  width: initial;
+  background-color: rgba(116, 150, 146, .2);
+}
 
-  button {
-    background-color: var(--seafoam);
-    border: 0;
-    padding: 1%;
-    color: white;
-    font-weight: bold;
-    transition: background-color 0.1s;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  button:hover {
-    background-color: var(--dark-seafoam);
-  }
+.comment:nth-child(odd) {
+  background-color: rgba(116, 150, 146, .7);
+}
 
-  textarea, input {
-  padding: 0.5%;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+.comment-body {
+  font-size: 17px;
+}
+
+.comment-user-info {
+  color: var(--light-grey);
+  margin: 15px auto 15px auto;
+}
+
+button {
+  background-color: rgba(47, 212, 190, .8);
+  border: 0;
+  padding: 7px 10px 7px 10px;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.1s;
+  cursor: pointer;
+  border-radius: 12px;
+  margin: 10px auto 10px auto;
+}
+
+.add-comment-btn {
+  width:100%;
+  display:block;
+}
+
+
+button:hover {
+  background-color: var(--dark-seafoam);
+}
+
+textarea, input {
+padding: 0.5%;
+border-radius: 5px;
+border: 1px solid #ccc;
 }
 
 textarea:focus, input:focus {
@@ -197,9 +213,9 @@ form > div {
     margin-bottom: 2%;
   }
   
-  form label {
-    display: block;
-  }
+form label {
+  display: block;
+}
 
 .post-img {
   height: 100%; 
@@ -231,10 +247,6 @@ form > div {
   width: 95%; /* Could be more or less, depending on screen size */
 }
 
-.modal-content input {
-  color: var(--lighter-grey);
-}
-
 /* The Close Button */
 .close {
   float: right;
@@ -242,15 +254,25 @@ form > div {
 
 .modal-btn {
   background-color: rgba(20, 85, 78, .5);
+  box-shadow: 3px 3px 2px 1px rgba(116, 150, 146, .3);
+}
+
+.modal-btn:hover {
+  background-color: var(--seafoam);
 }
 
 .upload-btn {
   background-color: rgba(20, 85, 78, .4);
   margin-top: 10px;
+  width: 100%;
 }
 
 #main-modal-btn {
   margin-top: 5%;
+}
+
+#dash-link {
+  color: var(--dark-seafoam);
 }
 
 

@@ -2,16 +2,20 @@
   {{#each this}}
     <section class="comment">
       <div class="meta">
-        <div class="text">
-          {{comment_text}}
+        <div>
+          <p class="comment-body">
+            {{comment_text}}
+          </p>
+          <p class="comment-user-info">
+            {{user.username}}
+            commented on
+            {{format_date created_at}}
+          </p>
         </div>
-        {{user.username}}
-        commented on
-        {{format_date created_at}}
       </div>
       <div>
         {{!-- {{#if loggedIn}} --}}
-          <button class="edit-btn" type="button">Edit comment</button>
+          <button class="edit-btn" type="button">edit</button>
         {{!-- {{/if}} --}}
       </div>
     </section>
