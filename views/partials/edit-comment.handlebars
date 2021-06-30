@@ -1,0 +1,44 @@
+<article>
+    <a href="/dashboard"> &larr; Back to dashboard</a>
+    <div class="card">
+        <div class="card-header">
+            <h2>
+                Edit Comment
+            </h2>
+        </div>
+        <div class="card-body">
+            <form class="edit-comment-form">
+                
+                <div>
+                    <input name="comment-text" type="text" value="{{comment.comment_text}}" />
+                </div>
+                
+
+                 {{!-- <div>
+                    <select id="tag-dropdown" multiple="multiple">
+                        {{ log post}}
+                        <i class="fas fa-trash"></i>
+                        {{#each post.tags}}
+                        <option value="{{id}}">{{tag_text}}  <i class="fas fa-trash"></i></option>
+                        {{/each}}
+                    </select>
+
+                     <select id="all-tag-dropdown" multiple="multiple">
+                        {{#each tags}}
+                        <option value="{{id}}">{{tag_text}}</option>
+                        {{/each}}
+                    </select>
+                </div> --}}
+                
+                <button type="submit">Save Comment</button>
+                <button type="button" class="delete-comment-btn">Delete Comment</button>
+            </form>
+        </div>
+    </div>
+</article>
+
+
+
+
+<script src="/javascript/edit-comment.js"></script>
+<script src="/javascript/delete-comment.js"></script>
