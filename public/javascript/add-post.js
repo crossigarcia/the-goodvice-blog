@@ -55,6 +55,7 @@ async function newFormHandler(event) {
       title,
       post_text,
       tagIds,
+      image_url
     }),
     headers: {
       "Content-Type": "application/json",
