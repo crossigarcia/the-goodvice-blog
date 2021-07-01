@@ -292,3 +292,6 @@ form label {
   color: var(--light-grey);
 }
 
+#searchbtn {
+  display: none;
+}

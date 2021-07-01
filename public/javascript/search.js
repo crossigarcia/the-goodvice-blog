@@ -24,18 +24,18 @@ function filterFunction() {
 }
 
 async function tagSearch(event) {
-  console.log("hai");
+//   console.log("hai");
 
   event.preventDefault();
 
   const searchQuery = document
-    .querySelector('#myInput')
+    .querySelector('#searchField')
     .value.trim();
 
 //   const post_id = window.location.toString().split("/")[
 //     window.location.toString().split("/").length - 1
 //   ];
-
+    console.log(`********************${searchQuery}********************`);
   if (searchQuery) {
     const response = await fetch(`/search/q=${searchQuery}`, {
       method: "GET",
@@ -58,11 +58,19 @@ async function tagSearch(event) {
   }
 }
 
-// var e = $.Event( "keypress", { which: 13 } );
+// var e = document.addEventListener( "keypress", { which: 13 } );
 // document
-//     .querySelector('#myInput')
+//     .querySelector('#searchField')
 //     .trigger(e)
 //     .addEventListener('click', tagSearch);
+
+var input = document.getElementById('searchField');
+input.addEventListener('keyup', function (event) {
+    if (event.key === 13) {
+        event.preventDefault;
+        document.getElementById('searchbtn').click();
+    }
+});
 
 document
     .querySelector(".searchTag")
