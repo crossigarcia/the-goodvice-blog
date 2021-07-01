@@ -123,6 +123,7 @@ a {
   background-color: rgba(47, 212, 190, .6);
   padding: 5px 15px 5px 15px;
   margin: 10px;
+  font-size: 14px;
 }
 
 .add-post-modal {
@@ -211,6 +212,7 @@ textarea {
 
 form > div {
     margin-bottom: 2%;
+    text-align: left;
   }
   
 form label {
