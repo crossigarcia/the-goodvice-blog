@@ -23,89 +23,37 @@ function filterFunction() {
   }
 }
 
-async function tagSearch(event) {
-//   console.log("hai");
-
+async function searchWord(event) {
   event.preventDefault();
-
-  const searchQuery = document
-    .querySelector('#searchField')
-    .value.trim();
-
-//   const post_id = window.location.toString().split("/")[
-//     window.location.toString().split("/").length - 1
-//   ];
-    console.log(`********************${searchQuery}********************`);
-  if (searchQuery) {
-    const response = await fetch(`/search/q=${searchQuery}`, {
-      method: "GET",
-      body: JSON.stringify({
-        title,
-        post_text,
-        tagIds
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (response.ok) {
-    //   document.location.reload();
-    document.reload();
-    } else {
-      alert(response.statusText);
-    }
+  const searchQuery = document.getElementById("searchField").value;
+  console.log(`**************${searchQuery}**************`);
+  const response = await fetch(`/search/q=${searchQuery}`, {
+    method: "GET",
+    //   body: JSON.stringify({
+    //     // title,
+    //     // post_text,
+    //     // tagIds,
+    //   }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (response.ok) {
+    console.log("ok");
+    document.location.replace(`/search/q=${searchQuery}`);
+  } else {
+    console.log("not ok");
+    alert(response.statusText);
   }
 }
 
-// var e = document.addEventListener( "keypress", { which: 13 } );
-// document
-//     .querySelector('#searchField')
-//     .trigger(e)
-//     .addEventListener('click', tagSearch);
 
-var input = document.getElementById('searchField');
-input.addEventListener('keyup', function (event) {
-    if (event.key === 13) {
-        event.preventDefault;
-        document.getElementById('searchbtn').click();
-    }
-});
+el = document.getElementById("searchbtn");
+if (el) {
+  el.addEventListener("click", searchWord);
+}
 
-document
-    .querySelector(".searchTag")
-    .addEventListener("click", filterFunction);
+// document.getElementById("searchbtn");
+// document.addEventListener("click", eggs);
 
-
-
-
-// async function searchFormHandler() {
-// let query = document.querySelector('[name="srch"]').value;
-// console.log(query);
-
-//   const response = await fetch(`/search/q=${query}`, {
-//     method: "GET",
-//     body: JSON.stringify({
-//       title,
-//       post_text,
-//       tagIds,
-//     }),
-//     headers: { 'Content-Type': 'application/json '},
-//   });
-
-//   if (response.ok) {
-//     document.location.reload();
-//   } else {
-//     alert(response.statusText);
-//   }
-// };
-
-// $(document).ready(function() {
-// 	const bclick = document.getElementById('text-search');
-// 	bclick.addEventListener('click', searchFormHandler);
-// });
-
-// document.getElementById('text-search').addEventListener('click', function() {
-//   console.log('hello')
-// });
-
+// document.querySelector(".searchTag").addEventListener("click", filterFunction);
