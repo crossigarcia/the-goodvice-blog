@@ -2,17 +2,17 @@
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="https://www.rd.com/wp-content/uploads/2019/12/dog-and-cat-friends-scaled.jpg" class="post-img" alt="...">
+                <img src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2020/08/17/09/istock-1160123255.jpg?width=982&height=726&auto=webp&quality=75" class="post-img" alt="...">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title"><a href="/post/{{id}}">{{title}}</a></h5>
+                    <h3 class="card-title"><a href="/post/{{id}}">{{title}}</a></h3>
                     <div class="card-text" id="post-text">
                         {{post_text}}
                     </div>
                     <div class="card-tags">
                         {{#each tags}}
-                        <h6 class="badge rounded-pill">{{tag_text}}</h6>
+                        <span class="badge rounded-pill">{{tag_text}}</span>
                         {{/each}}
                     </div>
                     <div class="card-footer">
