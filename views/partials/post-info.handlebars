@@ -1,10 +1,10 @@
-<div class="col-sm-12 col-md-6 col-lg-4">
-    <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
+<div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+    <div class="card h-100">
+        <div class="row g-0 py-0 h-100">
             <div class="col-md-4">
                 <img src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2020/08/17/09/istock-1160123255.jpg?width=982&height=726&auto=webp&quality=75" class="post-img" alt="...">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 py-0">
                 <div class="card-body">
                     <h3 class="card-title"><a href="/post/{{id}}">{{title}}</a></h3>
                     <div class="card-text" id="post-text">
@@ -15,10 +15,10 @@
                         <span class="badge rounded-pill">{{tag_text}}</span>
                         {{/each}}
                     </div>
-                    <div class="card-footer">
-                        <p class="card-text">Posted by {{user.username}} on {{format_date created_at}}</p>
-                    </div>
                 </div>
+            </div>
+            <div class="card-footer">
+                <p class="card-text">Posted by {{user.username}} on {{format_date created_at}}</p>
             </div>
         </div>
     </div>
