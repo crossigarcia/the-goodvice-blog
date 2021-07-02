@@ -52,7 +52,10 @@
             <input id="search-text" class="form-control me-2" type="search" name="srch" placeholder="Search" aria-label="Search">
             <button id="text-search" class="btn search-btn" type="submit">Search</button>
           </form> --}}
-          
+          <form class="form-inline my-2 my-lg-0">
+            <input id='searchField' class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button id='searchbtn' class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
         </div>
       </div>
     </nav>
@@ -70,7 +73,7 @@
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
   {{/if}}
-  {{!-- <script src="/javascript/search.js"></script> --}}
+  <script src="/javascript/search.js"></script>
 </body>
 
 </html>
