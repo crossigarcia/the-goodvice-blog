@@ -23,81 +23,37 @@ function filterFunction() {
   }
 }
 
-async function tagSearch(event) {
-  console.log("hai");
-
+async function searchWord(event) {
   event.preventDefault();
-
-  const searchQuery = document
-    .querySelector('#myInput')
-    .value.trim();
-
-//   const post_id = window.location.toString().split("/")[
-//     window.location.toString().split("/").length - 1
-//   ];
-
-  if (searchQuery) {
-    const response = await fetch(`/search/q=${searchQuery}`, {
-      method: "GET",
-      body: JSON.stringify({
-        title,
-        post_text,
-        tagIds
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (response.ok) {
-    //   document.location.reload();
-    document.reload();
-    } else {
-      alert(response.statusText);
-    }
+  const searchQuery = document.getElementById("searchField").value;
+  console.log(`**************${searchQuery}**************`);
+  const response = await fetch(`/search/q=${searchQuery}`, {
+    method: "GET",
+    //   body: JSON.stringify({
+    //     // title,
+    //     // post_text,
+    //     // tagIds,
+    //   }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (response.ok) {
+    console.log("ok");
+    document.location.replace(`/search/q=${searchQuery}`);
+  } else {
+    console.log("not ok");
+    alert(response.statusText);
   }
 }
 
-// var e = $.Event( "keypress", { which: 13 } );
-// document
-//     .querySelector('#myInput')
-//     .trigger(e)
-//     .addEventListener('click', tagSearch);
 
-document
-    .querySelector(".searchTag")
-    .addEventListener("click", filterFunction);
+el = document.getElementById("searchbtn");
+if (el) {
+  el.addEventListener("click", searchWord);
+}
 
+// document.getElementById("searchbtn");
+// document.addEventListener("click", eggs);
 
-
-
-// async function searchFormHandler() {
-// let query = document.querySelector('[name="srch"]').value;
-// console.log(query);
-
-//   const response = await fetch(`/search/q=${query}`, {
-//     method: "GET",
-//     body: JSON.stringify({
-//       title,
-//       post_text,
-//       tagIds,
-//     }),
-//     headers: { 'Content-Type': 'application/json '},
-//   });
-
-//   if (response.ok) {
-//     document.location.reload();
-//   } else {
-//     alert(response.statusText);
-//   }
-// };
-
-// $(document).ready(function() {
-// 	const bclick = document.getElementById('text-search');
-// 	bclick.addEventListener('click', searchFormHandler);
-// });
-
-// document.getElementById('text-search').addEventListener('click', function() {
-//   console.log('hello')
-// });
-
+// document.querySelector(".searchTag").addEventListener("click", filterFunction);

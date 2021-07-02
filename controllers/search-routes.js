@@ -100,18 +100,32 @@ router.get("/q=:query", (req, res) => {
         },
       ],
     },
-    attributes: ["title", "post_text"],
+    attributes: ["id", "title", "post_text", "created_at"],
+    include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+      {
+        model: Tag,
+        as: "tags",
+      },
+    ],
   })
-    .then((dbTagData) => {
-      if (!dbTagData) {
-        res.status(404).json({ message: "No posts found" });
-        return;
-      }
-      // serialize the data
-      const post = dbTagData.get({ plain: true });
-
-      // pass data to template
-      res.render("homepage", { post, loggedIn: req.session.loggedIn });
+    .then((dbTags) => {
+      const posts = dbTags.map((post) => post.get({ plain: true }));
+      res.render("homepage", {
+        posts,
+        loggedIn: req.session.loggedIn,
+      });
     })
     .catch((err) => {
       console.log(err);
