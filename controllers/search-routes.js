@@ -17,11 +17,9 @@ router.get("/tagged/:query", (req, res) => {
         },
         attributes: ["post_id"],
       }).then((dbTags) => {
-        console.log(typeof dbTags, "===");
         let postIds = dbTags.map(
           (postTag) => postTag.get({ plain: true }).post_id
         );
-        console.log(postIds, "75765ghf====");
         return Post.findAll({
           where: {
             id: { [Op.in]: postIds },
@@ -54,11 +52,9 @@ router.get("/tagged/:query", (req, res) => {
         });
       })
     .then((dbTags) => {
-      console.log(typeof dbTags, "@@@@");
       const posts = dbTags.map((post) => post.get({ plain: true }));
       Tag.findAll().then(dbPosts=>{
         const tags = dbPosts.map((post) => post.get({ plain: true }));
-        console.log(tags,"==6786==")
         res.render("homepage", {
           posts,
           tags,
