@@ -25,7 +25,7 @@ a {
 
 .navbar {
     background-color: var(--seafoam);
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 .navbar-toggler {
@@ -63,22 +63,20 @@ a {
   color: var(--light-seafoam);
 }
 
-
-/* .search-btn {
-    border: 1px solid var(--light-seafoam);
-    color: var(--light-seafoam);
+#searchbtn {
+  padding: 5px;
+  border: 1px solid var(--light-seafoam);
+  color: var(--light-seafoam);
 }
 
-.search-btn:hover {
-    border: 1px solid var(--light-seafoam);
-    background-color: var(--light-seafoam);
-    color: var(--seafoam);
-} */
+#searchbtn:hover {
+  border: 1px solid var(--light-seafoam);
+  background-color: var(--light-seafoam);
+  color: var(--seafoam);
+}
 
 .card {
     padding: 0;
-    margin-top: 8px;
-    margin-bottom: 8px;
     box-shadow: 5px 5px 2px 1px rgba(116, 150, 146, .3);
     color: var(--dark-seafoam);
     text-align: center;
@@ -108,8 +106,10 @@ a {
 }
 
 .card-footer {
-    background-color: rgba(47, 212, 190, .2);
+    background-color: rgba(47, 212, 190, .1);
     border-top: 1px solid var(--seafoam);
+    margin-bottom: 0;
+    padding: 1px;
 }
 
 .card-footer .card-text {
@@ -127,26 +127,38 @@ a {
 }
 
 .add-post-modal {
+  border: 1px solid var(--seafoam);
   background-color: rgba(47, 212, 190, .3);
-  box-shadow: 5px 5px 2px 1px rgba(116, 150, 146, .2);
   color: var(--dark-seafoam);
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+  padding: 0;
+  text-align: center;
 }
 
-.add-post-modal h2 {
-  margin: 20px 30px 25px 20px;
+.dash-title {
+  padding: 0;
 }
 
 .add-post-btn {
   border: none;
   color: var(--dark-seafoam);
-  padding: 5px 15px 5px 15px;
+  background-color: rgba(47, 212, 190, 0);
+}
+
+.add-post-btn:hover {
+  color: var(--seafoam);
   background-color: rgba(47, 212, 190, 0);
 }
 
 .plus {
-  font-size: 40px;
+  font-size: 55px;
   padding: 0;
+  margin: 0;
+}
+
+.dash-title h3 {
+  margin-top: 35px;
+  text-align: center;
 }
 
 .comment-form {
@@ -243,10 +255,10 @@ form label {
 /* Modal Content/Box */
 .modal-content {
   background-color: var(--lighter-grey);
-  margin: 20% auto; /* 15% from the top and centered */
+  margin: 90px auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 95%; /* Could be more or less, depending on screen size */
+  width: 90%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -257,6 +269,10 @@ form label {
 .modal-btn {
   background-color: rgba(20, 85, 78, .5);
   box-shadow: 3px 3px 2px 1px rgba(116, 150, 146, .3);
+}
+
+.cloudinary-button {
+  background-color: rgba(20, 85, 78, .5);
 }
 
 .modal-btn:hover {
@@ -292,10 +308,6 @@ form label {
 
 .edit-post-form a{
   color: var(--light-grey);
-}
-
-#searchbtn {
-  display: none;
 }
 
 .empty-results {
