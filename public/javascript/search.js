@@ -29,11 +29,6 @@ async function searchWord(event) {
   console.log(`**************${searchQuery}**************`);
   const response = await fetch(`/search/q=${searchQuery}`, {
     method: "GET",
-    //   body: JSON.stringify({
-    //     // title,
-    //     // post_text,
-    //     // tagIds,
-    //   }),
     headers: {
       "Content-Type": "application/json",
     },
@@ -52,8 +47,5 @@ el = document.getElementById("searchbtn");
 if (el) {
   el.addEventListener("click", searchWord);
 }
-
-// document.getElementById("searchbtn");
-// document.addEventListener("click", eggs);
 
 // document.querySelector(".searchTag").addEventListener("click", filterFunction);
