@@ -32,11 +32,9 @@ router.get("/tagged/:query", (req, res) => {
     attributes: ["post_id"],
   })
     .then((dbTags) => {
-      // console.log("____________" + dbTags);
       let postIds = dbTags.map(
         (postTag) => postTag.get({ plain: true }).post_id
       );
-      // console.log("trying to find this dude" + postIds);
       return Post.findAll({
         where: {
           id: { [Op.in]: postIds },
@@ -122,10 +120,16 @@ router.get("/q=:query", (req, res) => {
   })
     .then((dbTags) => {
       const posts = dbTags.map((post) => post.get({ plain: true }));
-      res.render("homepage", {
-        posts,
-        loggedIn: req.session.loggedIn,
-      });
+      if (posts.length > 0) {
+        res.render("homepage", {
+          posts,
+          loggedIn: req.session.loggedIn,
+        });
+      } else {
+        res.render ('empty-results', {
+          loggedIn: req.session.loggedIn,
+        });
+      }
     })
     .catch((err) => {
       console.log(err);
