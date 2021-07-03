@@ -135,14 +135,13 @@ a {
   text-align: center;
 }
 
-.add-post-modal h3 {
-  margin: 20px 30px 25px 20px;
+.dash-title {
+  padding: 0;
 }
 
 .add-post-btn {
   border: none;
   color: var(--dark-seafoam);
-  padding: 5px 15px 5px 15px;
   background-color: rgba(47, 212, 190, 0);
 }
 
@@ -152,8 +151,14 @@ a {
 }
 
 .plus {
-  font-size: 40px;
+  font-size: 55px;
   padding: 0;
+  margin: 0;
+}
+
+.dash-title h3 {
+  margin-top: 35px;
+  text-align: center;
 }
 
 .comment-form {
@@ -250,10 +255,10 @@ form label {
 /* Modal Content/Box */
 .modal-content {
   background-color: var(--lighter-grey);
-  margin: 20% auto; /* 15% from the top and centered */
+  margin: 90px auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 95%; /* Could be more or less, depending on screen size */
+  width: 90%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -264,6 +269,10 @@ form label {
 .modal-btn {
   background-color: rgba(20, 85, 78, .5);
   box-shadow: 3px 3px 2px 1px rgba(116, 150, 146, .3);
+}
+
+.cloudinary-button {
+  background-color: rgba(20, 85, 78, .5);
 }
 
 .modal-btn:hover {
@@ -299,10 +308,6 @@ form label {
 
 .edit-post-form a{
   color: var(--light-grey);
-}
-
-#searchbtn {
-  display: none;
 }
 
 .empty-results {

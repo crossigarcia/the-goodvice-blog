@@ -1,8 +1,10 @@
-<section class="container">
+<section class="container-fluid">
   <div class="row justify-content-center">
-    <section class="add-post-modal col-sm-12 col-md-6 col-lg-6">
-      <h3 class="d-inline-block">Welcome to your dashboard</h3>
-      <button id="button" class="add-post-btn" data-modal="modalOne"><span class="plus">&plus;</span></button>
+    <section class="add-post-modal col-12">
+      <div class="dash-title row justify-content-around">
+        <h3 class="col-sm-12 col-md-6 col-lg-8">Welcome to your dashboard</h3>
+        <button id="button" class="add-post-btn col-sm-12 col-md-2 col-lg-4" data-modal="modalOne"><span class="plus">&plus;</span></button>
+      </div>
       <div id="modalOne" class="modal">
         <div class="modal-content">
           <div>
@@ -34,10 +36,9 @@
               </div>
             </form>
             <div class="add-img-form">
-              <button id="upload_widget" class="cloudinary-button">Upload files</button>
-              <input type="text" name="image_url" id="post-image"/>
-              <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>  
-
+              <button id="upload_widget" class="modal-btn">Upload files</button>
+              <input type="text" name="image_url" id="post-image" />
+              <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
             </div>
           </div>
         </div>

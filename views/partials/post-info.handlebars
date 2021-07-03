@@ -2,7 +2,11 @@
     <div class="card h-100">
         <div class="row g-0 py-0 h-100">
             <div class="col-md-4">
+                {{#if image_url}}
                 <img src="{{image_url}}" class="post-img" alt="..."/>
+                {{else}}
+                <img src="/assets/images/placeholder-gvb.png" class="post-img" alt="image placeholder" />
+                {{/if}}
             </div>
             <div class="col-md-8 py-0">
                 <div class="card-body">
