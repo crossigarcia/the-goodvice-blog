@@ -35,11 +35,14 @@ router.get('/', (req, res) => {
     .then(dbPostData => {
       // pass a single post object into the homepage template
       const posts = dbPostData.map(post => post.get({ plain: true }));
-
-      res.render('homepage', {
-        posts,
-        loggedIn: req.session.loggedIn
-      });
+      Tag.findAll().then(dbTagData=>{
+        const tags = dbTagData.map(post => post.get({ plain: true }));
+        res.render('homepage', {
+          posts,
+          tags,
+          loggedIn: req.session.loggedIn
+        });
+      })
     })
     .catch(err => {
       console.log(err);
