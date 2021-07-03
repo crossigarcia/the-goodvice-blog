@@ -16,6 +16,7 @@ router.get('/', withAuth, (req, res) => {
         'post_text',
         'title',
         'created_at',
+        'image_url'
       ],
       include: [
         {
@@ -62,7 +63,8 @@ router.get('/', withAuth, (req, res) => {
             'id',
             'post_text',
             'title',
-            'created_at'
+            'created_at',
+            'image_url'
         ],
         include: [
             {

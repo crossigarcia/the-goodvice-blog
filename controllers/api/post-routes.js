@@ -82,7 +82,7 @@ router.post('/', withAuth, (req, res) => {
       title: req.body.title,
       post_text: req.body.post_text,
       tag_id: req.body.tag_id,
-      // image_url: req.body.image_url,
+      image_url: req.body.image_url,
       user_id: req.session.user_id
     })
     .then((post) => {
