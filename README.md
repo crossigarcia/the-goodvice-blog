@@ -39,7 +39,7 @@ To start posting and commenting on existing posts create an account or login. To
 For questions you can contact:
 - Chitra: <chitra.iyer00@gmail.com>
 - Nico: <nicopetelo@gmail.com>
-- Sushma: <>
+- Sushma: <sushmakr533@gmail.com>
 - Cecilia: <cecilia.rossi.garcia@gmail.com>
 - Rogelio: <Galiciar0513@gmail.com>
 
