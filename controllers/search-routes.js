@@ -32,11 +32,9 @@ router.get("/tagged/:query", (req, res) => {
     attributes: ["post_id"],
   })
     .then((dbTags) => {
-      // console.log("____________" + dbTags);
       let postIds = dbTags.map(
         (postTag) => postTag.get({ plain: true }).post_id
       );
-      // console.log("trying to find this dude" + postIds);
       return Post.findAll({
         where: {
           id: { [Op.in]: postIds },
