@@ -9,15 +9,15 @@ const sequelize = require('../config/connection');
 const seedAll = async () => {
   await sequelize.sync({ force: true });
   console.log('--------------');
-  await seedUsers();
+  // await seedUsers();
 
   //await seedComments();
 
-  await seedPosts();
+  // await seedPosts();
 
   await seedTags();
 
-  await seedPostTags();
+  // await seedPostTags();
 
   process.exit(0);
 };
