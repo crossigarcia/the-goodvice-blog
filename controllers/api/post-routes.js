@@ -104,48 +104,6 @@ router.post('/', withAuth, (req, res) => {
     });
   });
 
- // update product
-// router.put('/:id', withAuth, (req, res) => {
-//     // update product data
-//     Post.update(req.body, {
-//       where: {
-//         id: req.params.id,
-//       },
-//     })
-//       .then((post) => {
-//         // find all associated tags from ProductTag
-//         return PostTag.findAll({ where: { post_id: req.params.id } });
-//       })
-//       .then((postTags) => {
-//         // get list of current tag_ids
-//         const postTagIds = postTags.map(({ tag_id }) => tag_id);
-//         // create filtered list of new tag_ids
-//         const newPostTags = req.body.tagIds
-//           .filter((tag_id) => !postTagIds.includes(tag_id))
-//           .map((tag_id) => {
-//             return {
-//               post_id: req.params.id,
-//               tag_id,
-//             };
-//           });
-//         // figure out which ones to remove
-//         const postTagsToRemove = postTags
-//           .filter(({ tag_id }) => !req.body.tagIds.includes(tag_id))
-//           .map(({ id }) => id);
-  
-//         // run both actions
-//         return Promise.all([
-//           PostTag.destroy({ where: { id: postTagsToRemove } }),
-//           PostTag.bulkCreate(newPostTags),
-//         ]);
-//       })
-//       .then((updatedPostTags) => res.json(updatedPostTags))
-//       .catch((err) => {
-//         // console.log(err);
-//         res.status(400).json(err);
-//       });
-//   });
-
 router.put('/:id', withAuth, (req, res) => {
   Post.update(
     {

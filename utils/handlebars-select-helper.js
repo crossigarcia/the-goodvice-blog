@@ -1,5 +1,5 @@
 
-    Handlebars.registerHelper("select", function(value, options) {
+Handlebars.registerHelper("select", function(value, options) {
     return options.fn(this)
       .split('\n')
       .map(function(v) {
@@ -7,4 +7,4 @@
         return ! RegExp(t).test(v) ? v : v.replace(t, t + ' selected="selected"')
       })
       .join('\n')
-  })
+})
