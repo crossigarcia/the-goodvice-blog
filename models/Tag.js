@@ -20,21 +20,7 @@ Tag.init(
             // this means the tag_text must be at least three characters long (i.e. a "#" plus two characters)
             len: [3]
           }
-      },
-      // user_id: {
-      //   type: DataTypes.INTEGER,
-      //   references: {
-      //     model: 'user',
-      //     key: 'id'
-      //   }
-      // },
-      // post_id: {
-      //   type: DataTypes.INTEGER,
-      //   references: {
-      //     model: 'post',
-      //     key: 'id'
-      //   }
-      // }
+      }
     },
     {
       sequelize,

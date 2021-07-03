@@ -24,7 +24,7 @@ router.get("/tagged/:query", (req, res) => {
           where: {
             id: { [Op.in]: postIds },
           },
-            attributes: ["id", "title", "post_text", "created_at"],
+            attributes: ["id", "title", "post_text", "created_at", 'image_url'],
             include: [
               {
                 model: Comment,
@@ -33,7 +33,7 @@ router.get("/tagged/:query", (req, res) => {
                   "comment_text",
                   "post_id",
                   "user_id",
-                  "created_at",
+                  "created_at"
                 ],
                 include: {
                   model: User,
@@ -88,7 +88,7 @@ router.get("/q=:query", (req, res) => {
         },
       ],
     },
-    attributes: ["id", "title", "post_text", "created_at"],
+    attributes: ["id", "title", "post_text", "created_at", 'image_url'],
     include: [
       {
         model: Comment,

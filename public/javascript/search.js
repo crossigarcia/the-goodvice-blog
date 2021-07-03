@@ -47,5 +47,3 @@ el = document.getElementById("searchbtn");
 if (el) {
   el.addEventListener("click", searchWord);
 }
-
-// document.querySelector(".searchTag").addEventListener("click", filterFunction);

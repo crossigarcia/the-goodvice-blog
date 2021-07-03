@@ -2,8 +2,6 @@ const router = require("express").Router();
 const { Post, Tag, User, PostTag, Comment } = require("../../models");
 const { Op } = require("sequelize");
 
-// const { Tag } = require("../../models");
-
 router.get("/", (req, res) => {
   Post.findAll({})
     .then((dbTags) => res.json(dbTags))
@@ -78,9 +76,6 @@ router.get("/:id", (req, res) => {
           "id",
           "title",
           "post_text",
-          //   'created_at',
-          //   'updated_at',
-          //   'tag_id'
         ],
         include: [
           {
