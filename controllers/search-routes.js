@@ -122,10 +122,16 @@ router.get("/q=:query", (req, res) => {
   })
     .then((dbTags) => {
       const posts = dbTags.map((post) => post.get({ plain: true }));
-      res.render("homepage", {
-        posts,
-        loggedIn: req.session.loggedIn,
-      });
+      if (posts.length > 0) {
+        res.render("homepage", {
+          posts,
+          loggedIn: req.session.loggedIn,
+        });
+      } else {
+        res.render ('empty-results', {
+          loggedIn: req.session.loggedIn,
+        });
+      }
     })
     .catch((err) => {
       console.log(err);

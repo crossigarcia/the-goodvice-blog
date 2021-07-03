@@ -297,3 +297,16 @@ form label {
 #searchbtn {
   display: none;
 }
+
+.empty-results {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 400px;
+  color: var(--dark-seafoam);
+}
+
+#found-nothing {
+  color: var(--light-grey);
+}
