@@ -22,11 +22,26 @@ if (event.target == modal) {
     modal.style.display = "none";
 }
 }
+
+var myWidget = cloudinary.createUploadWidget({
+    cloudName: 'goodviceuser', 
+    uploadPreset: 'ozm4ur9t'}, (error, result) => { 
+      if (!error && result && result.event === "success") { 
+        console.log('Done! Here is the image info: ', result.info); 
+        document.querySelector('input[name="image_url"]').value = result.info.secure_url;
+      }
+    }
+  )
+  document.getElementById("upload_widget").addEventListener("click", function(){
+    myWidget.open();
+  }, false);
+  
 async function newFormHandler(event) {
   event.preventDefault();
   const title = document.querySelector('input[name="post-title"]').value;
   const post_text = document.querySelector('textarea[name="post-text"]').value;
   const tagDrop = document.getElementById("tag-dropdown");
+  const image_url = document.querySelector('input[name="image_url"]').value;
   const tagIds = [];
   for (let i = 0; i < tagDrop.options.length; i++) {
     if (tagDrop.options[i].selected) {
@@ -39,6 +54,7 @@ async function newFormHandler(event) {
       title,
       post_text,
       tagIds,
+      image_url
     }),
     headers: {
       "Content-Type": "application/json",
@@ -58,3 +74,4 @@ document.getElementById("popupForm").style.display = "none";
 }
 
 document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+
